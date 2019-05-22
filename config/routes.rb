@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # scope '(:locale)',
+  #     locale: Regexp.new(I18n.available_locales.map(&:to_s).join('|')) do
+
+  
+    #root 'users#index'
+  # end
 end
