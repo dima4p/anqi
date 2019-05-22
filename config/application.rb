@@ -15,5 +15,16 @@ module Anki
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Don't generate system test files.
+    config.generators.system_tests = nil
+
+    config.sass.preferred_syntax = :sass
+    config.generators do |g|
+      g.colorize_logging = true
+      g.template_engine :haml
+      g.cancan true
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    end
   end
 end
