@@ -57,6 +57,9 @@ group :development, :test do
   gem "rspec-rails"
   gem 'guard-bundler', require: false
   gem 'guard-rspec'
+  gem 'rspec-activemodel-mocks'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 
   # To load the directory
   gem 'require_all'
