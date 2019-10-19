@@ -71,14 +71,11 @@ group :development do
   gem 'annotate'
 
   # i18n + templates and tools
-  # gem 'active_record_model_and_rspec_enhanced_templates'
-  # gem 'advanced_haml_scaffold_generator'
-  # gem 'factory_girl_fixtures_template'
-  # gem 'i18n_scaffold_controller_template'
-  # gem 'i18n_scaffold_generator'
-  # gem 'jbuilder_rspec_generator'
-  # gem 'rspec_rails_scaffold_templates'
-  gem 'translations_sync'
+  gem 'active_record_model_and_rspec_enhanced_templates'
+  gem 'advanced_haml_scaffold_generator'
+  gem 'i18n_scaffold_controller_template'
+  gem 'i18n_scaffold_generator'
+  gem 'rspec_rails_scaffold_templates'
 end
 
 group :test do
