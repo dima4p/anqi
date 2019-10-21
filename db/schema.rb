@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_20_205753) do
 
-  create_table "collections", force: :cascade do |t|
+  create_table "col", force: :cascade do |t|
     t.integer "crt", null: false
     t.integer "mod", null: false
     t.integer "scm", null: false

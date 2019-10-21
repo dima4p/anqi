@@ -1,6 +1,6 @@
 class CreateCollections < ActiveRecord::Migration[5.2]
   def change
-    create_table :collections do |t|
+    create_table :col do |t|
       t.integer :crt, null: false
       t.integer :mod, null: false
       t.integer :scm, null: false
