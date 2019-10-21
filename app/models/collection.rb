@@ -8,6 +8,12 @@ class Collection < ApplicationRecord
   validates :crt, :mod, :scm, :ver, :dty, :usn, :ls, :conf, :models, :decks, :dconf, :tags,
       presence: true
 
+  serialize :conf, JSON
+  serialize :models, JSON
+  serialize :decks, JSON
+  serialize :dconf, JSON
+  serialize :tags, JSON
+
   scope :ordered, -> { order(:crt) }
 
 end
