@@ -1,0 +1,6 @@
+- title t('.title')
+
+- if can? :index, Collection
+  %p.nav= link_to t('back'), collections_path, class: 'index'
+
+= render 'form', collection: @collection

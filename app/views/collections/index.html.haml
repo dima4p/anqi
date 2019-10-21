@@ -1,0 +1,102 @@
+- title t('.title')
+
+- if can? :new, Collection
+  %p.nav= link_to t('.new_collection'), new_collection_path, class: 'new'
+
+- if @collections.limit(1).size > 0
+  - if @grid
+    = grid @grid do |g|
+      - g.column name: Collection.human_attribute_name(:crt),
+        attribute: 'crt' do |collection|
+        - collection.crt
+      - g.column name: Collection.human_attribute_name(:mod),
+        attribute: 'mod' do |collection|
+        - collection.mod
+      - g.column name: Collection.human_attribute_name(:scm),
+        attribute: 'scm' do |collection|
+        - collection.scm
+      - g.column name: Collection.human_attribute_name(:ver),
+        attribute: 'ver' do |collection|
+        - collection.ver
+      - g.column name: Collection.human_attribute_name(:dty),
+        attribute: 'dty' do |collection|
+        - collection.dty
+      - g.column name: Collection.human_attribute_name(:usn),
+        attribute: 'usn' do |collection|
+        - collection.usn
+      - g.column name: Collection.human_attribute_name(:ls),
+        attribute: 'ls' do |collection|
+        - collection.ls
+      - g.column name: Collection.human_attribute_name(:conf),
+        attribute: 'conf' do |collection|
+        - collection.conf
+      - g.column name: Collection.human_attribute_name(:models),
+        attribute: 'models' do |collection|
+        - collection.models
+      - g.column name: Collection.human_attribute_name(:decks),
+        attribute: 'decks' do |collection|
+        - collection.decks
+      - g.column name: Collection.human_attribute_name(:dconf),
+        attribute: 'dconf' do |collection|
+        - collection.dconf
+      - g.column name: Collection.human_attribute_name(:tags),
+        attribute: 'tags' do |collection|
+        - collection.tags
+      - g.column do |collection|
+        - if can? :show, collection
+          - link_to t('show'), collection, class: 'show'
+      - g.column do |collection|
+        - if can? :edit, collection
+          - link_to t('edit'), edit_collection_path(collection), class: 'edit'
+      - g.column do |collection|
+        - if can? :destroy, collection
+          - link_to t('destroy'), collection,
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
+            method: :delete, class: 'destroy'
+  -else
+    %table
+      %thead
+        %tr
+          %th= Collection.human_attribute_name :crt
+          %th= Collection.human_attribute_name :mod
+          %th= Collection.human_attribute_name :scm
+          %th= Collection.human_attribute_name :ver
+          %th= Collection.human_attribute_name :dty
+          %th= Collection.human_attribute_name :usn
+          %th= Collection.human_attribute_name :ls
+          %th= Collection.human_attribute_name :conf
+          %th= Collection.human_attribute_name :models
+          %th= Collection.human_attribute_name :decks
+          %th= Collection.human_attribute_name :dconf
+          %th= Collection.human_attribute_name :tags
+          %th{colspan: 3}= t 'actions'
+
+      %tbody
+        - @collections.each do |collection|
+          %tr{class: cycle(:odd, :even)}
+            %td= collection.crt
+            %td= collection.mod
+            %td= collection.scm
+            %td= collection.ver
+            %td= collection.dty
+            %td= collection.usn
+            %td= collection.ls
+            %td= collection.conf
+            %td= collection.models
+            %td= collection.decks
+            %td= collection.dconf
+            %td= collection.tags
+            %td.action
+              - if can? :show, collection
+                = link_to t('show'), collection, class: 'show'
+            %td.action
+              - if can? :edit, collection
+                = link_to t('edit'), edit_collection_path(collection), class: 'edit'
+            %td.action
+              - if can? :destroy, collection
+                = link_to t('destroy'), collection,
+                  data: {confirm: t('.confirm', default: 'Are you sure?')},
+                  method: :delete, class: 'destroy'
+- else
+  .empty
+    = t '.empty'

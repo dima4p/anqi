@@ -1,0 +1,41 @@
+---
+en:
+  activerecord:
+    models:
+      collection: "Collection"
+    attributes:
+      collection: 
+        crt: "Created"
+        mod: "Modified"
+        scm: "Schema modified"
+        ver: "Scheduler Version"
+        dty: "Dirty"
+        usn: "Used number"
+        ls: "Last synched"
+        conf: "Configuration"
+        models: "Models"
+        decks: "Decks"
+        dconf: "Decks configuration"
+        tags: "Tags"
+  helpers:
+    submit:
+      collection:
+        create: "Create collection"
+        update: "Update collection"
+  collections:
+    edit:
+      title: "Editing of the collection"
+    form:
+      collection: "Collection"
+    index:
+      confirm: "Are you sure you want to delete the collection?"
+      empty: "No collections found"
+      new_collection: "Add a new collection"
+      title: "Listing of collections"
+    new:
+      title: "Adding a new collection"
+    show:
+      title: "Collection details"
+    was_created: "Collection was successfully added"
+    was_deleted: "Collection was successfully deleted"
+    was_updated: "Collection was successfully updated"

@@ -22,6 +22,7 @@ module AuthenticationHelper
   end
 
   def current_user
+    return nil
     return @current_user if defined?(@current_user)
     @current_user = User.new
 #     @current_user = current_user_session && current_user_session.record || User.new
@@ -41,6 +42,14 @@ module AuthenticationHelper
   def redirect_to_target_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
+  end
+
+  def can?(*args)
+    true
+  end
+
+  def cannot?(*args)
+    false
   end
 
   private

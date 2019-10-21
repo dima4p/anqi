@@ -1,0 +1,33 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Collection
+    = link_to t('back'), collections_path, class: 'index'
+  - if can? :edit, @collection
+    = link_to t('edit'), edit_collection_path(@collection), class: 'edit'
+
+%dl
+  %dt= Collection.human_attribute_name :crt
+  %dd= @collection.crt
+  %dt= Collection.human_attribute_name :mod
+  %dd= @collection.mod
+  %dt= Collection.human_attribute_name :scm
+  %dd= @collection.scm
+  %dt= Collection.human_attribute_name :ver
+  %dd= @collection.ver
+  %dt= Collection.human_attribute_name :dty
+  %dd= @collection.dty
+  %dt= Collection.human_attribute_name :usn
+  %dd= @collection.usn
+  %dt= Collection.human_attribute_name :ls
+  %dd= @collection.ls
+  %dt= Collection.human_attribute_name :conf
+  %dd= @collection.conf
+  %dt= Collection.human_attribute_name :models
+  %dd= @collection.models
+  %dt= Collection.human_attribute_name :decks
+  %dd= @collection.decks
+  %dt= Collection.human_attribute_name :dconf
+  %dd= @collection.dconf
+  %dt= Collection.human_attribute_name :tags
+  %dd= @collection.tags

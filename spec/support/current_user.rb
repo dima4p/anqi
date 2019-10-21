@@ -1,4 +1,5 @@
 def current_user(stubs = {})
+  return nil
   @mock_current_user ||= mock_model(User, :name => 'Mock Current User').tap do |user|
     stubs.reverse_merge! :is_admin? => true
     stubs.reverse_merge! :is? => true, landing: nil
