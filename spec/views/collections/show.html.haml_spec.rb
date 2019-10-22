@@ -17,10 +17,10 @@ describe "collections/show", type: :view do
     assert_select 'dl>dd', text: Regexp.new(collection.ver.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.dty.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.usn.to_s)
-    assert_select 'dl>dd', text: Regexp.new(collection.conf.to_s)
+    # assert_select 'dl>dd', text: Regexp.new(collection.conf.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.models.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.decks.to_s)
-    assert_select 'dl>dd', text: Regexp.new(collection.dconf.to_s)
+    # assert_select 'dl>dd', text: Regexp.new(collection.dconf.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.tags.to_s)
   end
 end

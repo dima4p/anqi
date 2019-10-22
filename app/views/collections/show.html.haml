@@ -22,12 +22,27 @@
   %dt= Collection.human_attribute_name :usn
   %dd= @collection.usn
   %dt= Collection.human_attribute_name :conf
-  %dd= @collection.conf
+  %dd
+    %dl
+      - @collection.conf.each do |key, value|
+        %dt{class: key}=key
+        %dd{class: key}=value.inspect
+  %dt= Collection.human_attribute_name :dconf
+  %dd
+    %dl
+      - @collection.dconf.each do |key, value|
+        %dt{class: key}=key
+        %dd
+          - value.each do |k, v|
+            %dt{class: "#{key}-#{k}"}= k
+            %dd{class: "#{key}-#{k}"}
+              - if k == "mod"
+                = Time.at v
+              - else
+                = v.inspect
   %dt= Collection.human_attribute_name :models
   %dd= @collection.models
   %dt= Collection.human_attribute_name :decks
   %dd= @collection.decks
-  %dt= Collection.human_attribute_name :dconf
-  %dd= @collection.dconf
   %dt= Collection.human_attribute_name :tags
   %dd= @collection.tags

@@ -7,10 +7,10 @@ FactoryBot.define do
     sequence(:dty) {|n| "5#{format '%03d', n}" }
     sequence(:usn) {|n| "6#{format '%03d', n}" }
     sequence(:ls) {|n| "7#{format '%03d', n}" }
-    sequence(:conf) {|n| "Conf#{format '%03d', n}" }
-    sequence(:models) {|n| "Models#{format '%03d', n}" }
-    sequence(:decks) {|n| "Decks#{format '%03d', n}" }
-    sequence(:dconf) {|n| "Dconf#{format '%03d', n}" }
+    sequence(:conf) { {key: "value"} }
+    sequence(:models) { "{}" }
+    sequence(:decks) { "{}" }
+    sequence(:dconf) { "{}" }
     sequence(:tags) {|n| "Tags#{format '%03d', n}" }
   end
 end
