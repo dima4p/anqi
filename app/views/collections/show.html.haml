@@ -8,19 +8,19 @@
 
 %dl
   %dt= Collection.human_attribute_name :crt
-  %dd= @collection.crt
+  %dd= Time.at @collection.crt
   %dt= Collection.human_attribute_name :mod
-  %dd= @collection.mod
+  %dd= Time.at @collection.mod / 1000
   %dt= Collection.human_attribute_name :scm
-  %dd= @collection.scm
+  %dd= Time.at @collection.scm / 1000
+  %dt= Collection.human_attribute_name :ls
+  %dd= Time.at @collection.ls / 1000
   %dt= Collection.human_attribute_name :ver
   %dd= @collection.ver
   %dt= Collection.human_attribute_name :dty
   %dd= @collection.dty
   %dt= Collection.human_attribute_name :usn
   %dd= @collection.usn
-  %dt= Collection.human_attribute_name :ls
-  %dd= @collection.ls
   %dt= Collection.human_attribute_name :conf
   %dd= @collection.conf
   %dt= Collection.human_attribute_name :models

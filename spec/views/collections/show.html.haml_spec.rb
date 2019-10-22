@@ -10,13 +10,13 @@ describe "collections/show", type: :view do
 
   it "renders attributes in dl>dd" do
     render
-    assert_select 'dl>dd', text: Regexp.new(collection.crt.to_s)
-    assert_select 'dl>dd', text: Regexp.new(collection.mod.to_s)
-    assert_select 'dl>dd', text: Regexp.new(collection.scm.to_s)
+    assert_select 'dl>dd', text: Time.at(collection.crt).to_s
+    assert_select 'dl>dd', text: Time.at(collection.mod/1000).to_s
+    assert_select 'dl>dd', text: Time.at(collection.scm/1000).to_s
+    assert_select 'dl>dd', text: Time.at(collection.ls/1000).to_s
     assert_select 'dl>dd', text: Regexp.new(collection.ver.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.dty.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.usn.to_s)
-    assert_select 'dl>dd', text: Regexp.new(collection.ls.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.conf.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.models.to_s)
     assert_select 'dl>dd', text: Regexp.new(collection.decks.to_s)
