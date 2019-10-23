@@ -77,9 +77,10 @@ class CollectionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def collection_params
-    list = [
-      :crt, :mod, :scm, :ver, :dty, :usn, :ls, :conf, :models, :decks, :dconf, :tags
+    list = %i[
+      crt mod scm ver dty usn ls tags
     ]
+    list << {conf: {}, dconf: {}, decks: {}, models: {}}
     params.require(:collection).permit(*list)
   end
 end

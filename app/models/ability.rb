@@ -13,5 +13,6 @@ class Ability
       can :manage, :all
       # can :list, :all
     # end
+    cannot :destroy, Collection
   end
 end

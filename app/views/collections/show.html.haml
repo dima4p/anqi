@@ -41,8 +41,25 @@
               - else
                 = v.inspect
   %dt= Collection.human_attribute_name :models
-  %dd= @collection.models
+  %dd
+    %dl
+      - @collection.models.each do |key, value|
+        %dt{class: key}=Time.at key.to_i / 1000
+        %dd{class: "#{key}-name"}= value['name']
+        %dd
+          %dl
+            - Array(value['flds']).each do |field|
+              %dd= field['name']
+        -#%dd{class: key}=value.inspect
   %dt= Collection.human_attribute_name :decks
-  %dd= @collection.decks
+  %dd
+    %dl
+      - @collection.decks.each do |key, value|
+        %dt{class: key}=Time.at key.to_i / 1000
+        %dd{class: "#{key}-name"}
+          = value['name']
+          ***
+          = Time.at value['id'].to_i / 1000
+        -#%dd{class: "#{key}-name"}= value
   %dt= Collection.human_attribute_name :tags
   %dd= @collection.tags
