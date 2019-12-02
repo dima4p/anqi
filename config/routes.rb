@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :collections
+  resources :collections do
+    resources :decks
+  end
 
   root 'collections#index'
 
