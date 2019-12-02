@@ -37,6 +37,8 @@
             %dt{class: "#{key}-#{k}"}= k
             %dd{class: "#{key}-#{k}"}
               - if k == "mod"
+                = v
+                = ' = '
                 = Time.at v
               - else
                 = v.inspect
@@ -44,7 +46,10 @@
   %dd
     %dl
       - @collection.models.each do |key, value|
-        %dt{class: key}=Time.at key.to_i / 1000
+        %dt{class: key}
+          = key
+          = ' = '
+          =Time.at key.to_i / 1000
         %dd{class: "#{key}-name"}= value['name']
         %dd
           %dl
