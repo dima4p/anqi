@@ -21,7 +21,7 @@ require 'rails_helper'
 
 describe Collection, type: :model do
 
-  subject { create :collection }
+  subject(:collection) { create :collection }
 
   describe 'validations' do
     it { should be_valid }
@@ -50,5 +50,14 @@ describe Collection, type: :model do
       end   # .ordered
     end   # scopes
   end   # class methods
+
+  describe "#decks" do
+    subject {collection.decks}
+
+    it 'returns an array of Decks' do
+      is_expected.to be_a Hash
+      expect(subject.first.last).to be_a Deck
+    end
+  end
 
 end

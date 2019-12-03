@@ -59,12 +59,11 @@
   %dt= Collection.human_attribute_name :decks
   %dd
     %dl
-      - @collection.decks.each do |key, value|
-        %dt{class: key}=Time.at key.to_i / 1000
-        %dd{class: "#{key}-name"}
-          = value['name']
+      - @collection.decks.each do |id, deck|
+        %dt{class: deck.id}=Time.at deck.id.to_i / 1000
+        %dd{class: "#{deck.id}-name"}
+          = deck.name
           ***
-          = Time.at value['id'].to_i / 1000
-        -#%dd{class: "#{key}-name"}= value
+          = Time.at deck.id.to_i / 1000
   %dt= Collection.human_attribute_name :tags
   %dd= @collection.tags

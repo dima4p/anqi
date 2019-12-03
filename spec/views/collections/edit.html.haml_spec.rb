@@ -21,7 +21,7 @@ describe "collections/edit", type: :view do
       assert_select 'input#collection_ls[name=?]', 'collection[ls]'
       assert_select 'textarea#collection_conf[name=?]', 'collection[conf]'
       assert_select 'textarea#collection_models[name=?]', 'collection[models]'
-      assert_select 'textarea#collection_decks[name=?]', 'collection[decks]'
+      assert_select 'textarea#collection_decks[name=?]', 'collection[decks]', count: 0
       assert_select 'textarea#collection_dconf[name=?]', 'collection[dconf]'
       assert_select 'textarea#collection_tags[name=?]', 'collection[tags]'
     end

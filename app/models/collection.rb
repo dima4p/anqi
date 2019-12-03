@@ -35,4 +35,14 @@ class Collection < ApplicationRecord
 
   scope :ordered, -> { order(:crt) }
 
+  def decks
+    return unless attributes['decks']
+    @decks_hash ||= attributes['decks'].each_with_object({}) do |(id, attrs), result|
+      deck = Deck.new attrs
+      deck.id = id
+      deck.collection = self
+      result[id] = deck
+    end
+  end
+
 end

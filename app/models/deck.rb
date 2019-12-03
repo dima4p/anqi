@@ -30,6 +30,13 @@ class Deck
 
   validates :collection, :id, :name, presence: true
 
+  def initialize(attributes = nil)
+    attributes ||= {}
+    attributes.each do |attr, value|
+      send "#{attr}=", value
+    end
+  end
+
   def collection=(collection)
     @collection = collection
   end
