@@ -2,6 +2,7 @@
 #
 class Deck
 
+  extend ActiveModel::Translation
   # include ActiveModel::AttributeMethods
   include ActiveModel::Validations
 
