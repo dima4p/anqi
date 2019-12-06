@@ -35,7 +35,15 @@ describe Deck, type: :model do
   end   # validations
 
   describe "class" do
+    describe ".all" do
+      let(:collection) {create :collection}
+      let!(:decks) {collection.decks}
 
+      it "returns an arrays of the collection decks" do
+        expect(described_class.all(collection.id).size).to be 1
+        expect(described_class.all(collection.id).first.id).to eq decks.values.first.id
+      end
+    end
   end   # class
 
   describe ":collection=" do
@@ -65,4 +73,20 @@ describe Deck, type: :model do
     end
   end
 
+  describe "#save!" do
+    let(:collection) {deck.collection}
+
+    it "makes the changes permanent" do
+      deck.name = "my new name"
+      logger.debug "Rspec Deck@#{__LINE__}#save! #{deck.inspect}" if logger.debug?
+      deck.save!
+      expect(collection.decks[deck.id].name).to eq "my new name"
+    end
+
+    it "generates deck.id if it is blank" do
+      deck.id = nil
+      deck.save!
+      expect(deck.id).to be_a String
+    end
+  end
 end

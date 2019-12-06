@@ -45,4 +45,21 @@ class Collection < ApplicationRecord
     end
   end
 
+  def reload
+    @decks_hash = nil
+    super
+  end
+
+  def save_deck!(deck)
+    add_or_replace_deck deck
+    save!
+  end
+
+  private
+
+  def add_or_replace_deck(deck)
+    @decks_hash = nil
+    attributes['decks'][deck.id.to_s] = deck.to_hash
+  end
+
 end

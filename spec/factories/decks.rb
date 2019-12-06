@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :deck do
-    id { Time.now.to_i }
+    id { (Time.now.to_i * 1000).to_s }
     sequence(:name) {|n| "Name#{format '%03d', n}" }
     sequence(:browserCollapsed) {|n| "Browsercollapsed#{format '%03d', n}" }
     sequence(:collapsed) {|n| "Collapsed#{format '%03d', n}" }
