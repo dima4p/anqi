@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "collections/index", type: :view do
-  let!(:collection) {create :collection}
+  let!(:collection) {create :collection_with_decks}
 
   before(:each) do
     # allow(controller).to receive(:can?).and_return(true)

@@ -21,7 +21,7 @@ require 'rails_helper'
 
 describe Collection, type: :model do
 
-  subject(:collection) { create :collection }
+  subject(:collection) { create :collection_with_decks }
 
   describe 'validations' do
     it { should be_valid }
@@ -34,9 +34,9 @@ describe Collection, type: :model do
     it {should validate_presence_of :ls}
     it {should validate_presence_of :conf}
     it {should validate_presence_of :models}
-    it {should validate_presence_of :decks}
     it {should validate_presence_of :dconf}
     it {should validate_presence_of :tags}
+    # it {should validate_presence_of :decks}
   end   # validations
 
   describe 'class methods' do

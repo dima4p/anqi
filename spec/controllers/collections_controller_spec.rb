@@ -8,9 +8,9 @@ describe CollectionsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Collection. As you add validations to Collection, be sure to
   # adjust the attributes here as well. The list could not be empty.
-  let(:collection) {create :collection}
+  let(:collection) {create :collection_with_decks}
 
-  let(:valid_attributes) {attributes_for(:collection)
+  let(:valid_attributes) {attributes_for(:collection_with_decks)
     .slice *%i[crt mod scm ver dty usn ls conf models decks dconf tags]
   }
 

@@ -40,6 +40,7 @@ class CollectionsController < ApplicationController
         format.html { redirect_to @collection, notice: t('collections.was_created') }
         format.json { render :show, status: :created, location: @collection }
       else
+        logger.info "CollectionsController@#{__LINE__}#create #{@collection.errors.messages}"
         format.html { render :new }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end
@@ -53,6 +54,7 @@ class CollectionsController < ApplicationController
         format.html { redirect_to @collection, notice: t('collections.was_updated') }
         format.json { render :show, status: :ok, location: @collection }
       else
+        logger.info "CollectionsController@#{__LINE__}#update #{@collection.errors.messages}"
         format.html { render :edit }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end

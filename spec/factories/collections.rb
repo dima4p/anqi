@@ -28,16 +28,22 @@ FactoryBot.define do
     sequence(:ls) {|n| "7#{format '%03d', n}" }
     sequence(:conf) {|n| {"key#{format '%03d', n}": "value#{format '%03d', n}"}}
     sequence(:models) {|n| {(1411485233000 + n) => {"k#{format '%03d', n}": "v#{format '%03d', n}"}}}
-    sequence(:decks) do |n|
-      id = (Time.now.to_i * 1000 + n).to_s
-      {
-        id => {
-          "id" => id,
-          "name" => "name#{format '%03d', n}"
-        }
-      }
-    end
     sequence(:dconf) {|n| {"key#{format '%03d', n}": {"k#{format '%03d', n}": "v#{format '%03d', n}"}}}
     sequence(:tags) {|n| "Tags#{format '%03d', n}" }
+    decks {{}}
+
+    factory :collection_with_decks do
+      sequence(:decks) do |n|
+        id = (Time.now.to_i * 1000 + n).to_s
+        {
+          id => {
+            "id" => id,
+            "name" => "name#{format '%03d', n}",
+            "lrnToday" => [1900, rand(0..9)],
+            "newToday" => [1900, rand(10..19)],
+          }
+        }
+      end
+   end
   end
 end

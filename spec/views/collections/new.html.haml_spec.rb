@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "collections/new", type: :view do
-  let(:collection) {build :collection}
+  let(:collection) {build :collection_with_decks}
 
   before(:each) do
     # allow(controller).to receive(:can?).and_return(true)
