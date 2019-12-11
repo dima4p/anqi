@@ -50,6 +50,11 @@ class Collection < ApplicationRecord
     super
   end
 
+  def save_deck(deck)
+    add_or_replace_deck deck
+    save
+  end
+
   def save_deck!(deck)
     add_or_replace_deck deck
     save!
