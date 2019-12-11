@@ -1,6 +1,7 @@
 - show = {}
 - show[:collections] = can?(:index, Collection)
 - show[:decks]       = can?(:index, Deck)
+- show[:notes]       = can?(:index, Note)
 
 %nav#main_menu
   - if show.values.find {|v| v}
@@ -13,3 +14,7 @@
         - active = controller_name == 'decks' ? 'active' : ''
         %li{:class => active}
           = link_to t('.decks'), collection_decks_path(collection_id: 1), :class => 'decks'
+      - if show[:notes]
+        - active = controller_name == 'notes' ? 'active' : ''
+        %li{:class => active}
+          = link_to t('.notes'), notes_path, :class => 'notes'
