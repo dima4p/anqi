@@ -1,0 +1,10 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Deck
+    = link_to t('back'), collection_decks_path(collection_id: @collection.id), class: 'index'
+  - if can? :show, @deck
+    = link_to t('show'),
+        collection_deck_path(collection_id: @deck.collection.id, id: @deck.id), class: 'show'
+
+= render 'form', deck: @deck

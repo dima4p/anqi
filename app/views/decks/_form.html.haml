@@ -1,0 +1,96 @@
+= form_for([@collection, deck]) do |f|
+  - if deck.errors.any?
+    #error_explanation
+      %h2
+        = t 'errors.template.header', model: t('.deck'), count: deck.errors.count
+      %ul
+        - deck.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :desc
+    %br
+    = f.text_area :desc
+  .field
+    = f.label :mid
+    %br
+    = f.text_field :mid
+  .field
+    = f.label :currentDay
+    %br
+    = f.text_field :currentDay
+  .field
+    = f.label :lrnToday
+    %br
+    = f.text_field :lrnToday
+  .field
+    = f.label :newToday
+    %br
+    = f.text_field :newToday
+  .field
+    = f.label :revToday
+    %br
+    = f.text_field :revToday
+  .field
+    = f.label :timeToday
+    %br
+    = f.text_field :timeToday
+  .field
+    = f.label :extendNew
+    %br
+    = f.text_field :extendNew
+  .field
+    = f.label :extendRev
+    %br
+    = f.text_field :extendRev
+  .field
+    = f.label :browserCollapsed
+    %br
+    = f.text_field :browserCollapsed
+  .field
+    = f.label :collapsed
+    %br
+    = f.text_field :collapsed
+  .field
+    = f.label :conf
+    %br
+    = f.text_field :conf
+  .field
+    = f.label :delays
+    %br
+    = f.text_field :delays
+  .field
+    = f.label :dyn
+    %br
+    = f.text_field :dyn
+  .field
+    = f.label :resched
+    %br
+    = f.text_field :resched
+  .field
+    = f.label :return
+    %br
+    = f.text_field :return
+  .field
+    = f.label :separate
+    %br
+    = f.text_field :separate
+  .field
+    = f.label :terms
+    %br
+    = f.text_field :terms
+  .field
+    = f.label :usn
+    %br
+    = f.text_field :usn
+  .field
+    = f.label :mod
+    %br
+    = f.text_field :mod
+
+  .actions
+    = f.submit

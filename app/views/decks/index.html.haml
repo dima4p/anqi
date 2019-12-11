@@ -1,0 +1,75 @@
+- title t('.title')
+
+- if can? :new, Deck
+  %p.nav= link_to t('.new_deck'), new_collection_deck_path(collection_id: @collection.id), class: 'new'
+
+- if @decks.size > 0
+  %table
+    %thead
+      %tr
+        %th= Deck.human_attribute_name :name
+        -# %th= Deck.human_attribute_name :desc
+        %th= Deck.human_attribute_name :mid
+        %th= Deck.human_attribute_name :currentDay
+        %th= Deck.human_attribute_name :lrnToday
+        %th= Deck.human_attribute_name :newToday
+        %th= Deck.human_attribute_name :revToday
+        %th= Deck.human_attribute_name :timeToday
+        -# %th= Deck.human_attribute_name :browserCollapsed
+        -# %th= Deck.human_attribute_name :collapsed
+        -# %th= Deck.human_attribute_name :conf
+        -# %th= Deck.human_attribute_name :delays
+        -# %th= Deck.human_attribute_name :dyn
+        %th= Deck.human_attribute_name :extendNew
+        %th= Deck.human_attribute_name :extendRev
+        -# %th= Deck.human_attribute_name :resched
+        -# %th= Deck.human_attribute_name :return
+        -# %th= Deck.human_attribute_name :separate
+        -# %th= Deck.human_attribute_name :terms
+        %th= Deck.human_attribute_name :usn
+        %th= Deck.human_attribute_name :mod
+        %th{colspan: 3}= t 'actions'
+
+    %tbody
+      - @decks.each do |deck|
+        %tr{class: cycle(:odd, :even)}
+          %td.name= deck.name
+          -# %td.desc= deck.desc
+          %td.mid= deck.mid
+          %td.lrnToday= deck.currentDay
+          %td.lrnToday= deck.lrnToday
+          %td.newToday= deck.newToday
+          %td.revToday= deck.revToday
+          %td.timeToday= deck.timeToday
+          -# %td.browserCollapsed= deck.browserCollapsed
+          -# %td.collapsed= deck.collapsed
+          -# %td.conf= deck.conf
+          -# %td.delays= deck.delays
+          -# %td.dyn= deck.dyn
+          %td.extendNew= deck.extendNew
+          %td.extendRev= deck.extendRev
+          -# %td.resched= deck.resched
+          -# %td.returnd= deck.return
+          -# %td.separate= deck.separate
+          -# %td.terms= deck.terms
+          %td.usn= deck.usn
+          %td.mod= deck.mod
+          %td.action
+            - if can? :show, deck
+              = link_to t('show'),
+                  collection_deck_path(collection_id: deck.collection.id, id: deck.id),
+                  class: 'show'
+          %td.action
+            - if can? :edit, deck
+              = link_to t('edit'),
+                  edit_collection_deck_path(collection_id: deck.collection.id, id: deck.id),
+                  class: 'edit'
+          %td.action
+            - if can? :destroy, deck
+              = link_to t('destroy'),
+                collection_deck_path(collection_id: deck.collection.id, id: deck.id),
+                data: {confirm: t('.confirm', default: 'Are you sure?')},
+                method: :delete, class: 'destroy'
+- else
+  .empty
+    = t '.empty'

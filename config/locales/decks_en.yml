@@ -1,0 +1,50 @@
+---
+en:
+  activemodel:
+    models:
+      deck: "Deck"
+    attributes:
+      deck: 
+        name: "Name"
+        browserCollapsed: "Browser collapsed"
+        collapsed: "Collapsed"
+        conf: "Configuration"
+        currentDay: "Current day"
+        delays: "Delays"
+        desc: "Description"
+        dyn: "Dyn"
+        extendNew: "Extend New"
+        extendRev: "Extend Rev"
+        lrnToday: "Learned today"
+        mid: "Model id"
+        newToday: "New today"
+        resched: "Rescheduled"
+        return: "Return"
+        revToday: "Revised today"
+        separate: "Separate"
+        terms: "Terms"
+        timeToday: "Time today"
+        usn: "Used number"
+        mod: "Modified"
+  helpers:
+    submit:
+      deck:
+        create: "Create deck"
+        update: "Update deck"
+  decks:
+    edit:
+      title: "Editing of the deck"
+    form:
+      deck: "Deck"
+    index:
+      confirm: "Are you sure you want to delete the deck?"
+      empty: "No decks found"
+      new_deck: "Add a new deck"
+      title: "Listing of decks"
+    new:
+      title: "Adding a new deck"
+    show:
+      title: "Deck details"
+    was_created: "Deck was successfully added"
+    was_deleted: "Deck was successfully deleted"
+    was_updated: "Deck was successfully updated"

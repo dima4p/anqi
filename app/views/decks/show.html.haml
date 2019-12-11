@@ -1,0 +1,52 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Deck
+    = link_to t('back'), collection_decks_path(collection_id: @collection_id), class: 'index'
+  - if can? :edit, @deck
+    = link_to t('edit'),
+        edit_collection_deck_path(id: @deck.id, collection_id: @collection_id), class: 'edit'
+
+%dl
+  %dt= Deck.human_attribute_name :name
+  %dd= @deck.name
+  %dt= Deck.human_attribute_name :desc
+  %dd= @deck.desc
+  %dt= Deck.human_attribute_name :mid
+  %dd= @deck.mid
+  %dt= Deck.human_attribute_name :currentDay
+  %dd= @deck.currentDay
+  %dt= Deck.human_attribute_name :lrnToday
+  %dd= @deck.lrnToday
+  %dt= Deck.human_attribute_name :newToday
+  %dd= @deck.newToday
+  %dt= Deck.human_attribute_name :revToday
+  %dd= @deck.revToday
+  %dt= Deck.human_attribute_name :timeToday
+  %dd= @deck.timeToday
+  %dt= Deck.human_attribute_name :extendNew
+  %dd= @deck.extendNew
+  %dt= Deck.human_attribute_name :extendRev
+  %dd= @deck.extendRev
+  %dt= Deck.human_attribute_name :resched
+  %dd= @deck.resched
+  %dt= Deck.human_attribute_name :browserCollapsed
+  %dd= @deck.browserCollapsed
+  %dt= Deck.human_attribute_name :collapsed
+  %dd= @deck.collapsed
+  %dt= Deck.human_attribute_name :conf
+  %dd= @deck.conf
+  %dt= Deck.human_attribute_name :delays
+  %dd= @deck.delays
+  %dt= Deck.human_attribute_name :dyn
+  %dd= @deck.dyn
+  %dt= Deck.human_attribute_name :return
+  %dd= @deck.return
+  %dt= Deck.human_attribute_name :separate
+  %dd= @deck.separate
+  %dt= Deck.human_attribute_name :terms
+  %dd= @deck.terms
+  %dt= Deck.human_attribute_name :usn
+  %dd= @deck.usn
+  %dt= Deck.human_attribute_name :mod
+  %dd= @deck.mod
