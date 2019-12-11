@@ -18,17 +18,17 @@ class Deck
   attr_accessor :dyn
   attr_accessor :extendNew
   attr_accessor :extendRev
-  attr_accessor :lrnToday
   attr_accessor :mid
-  attr_accessor :newToday
   attr_accessor :resched
   attr_accessor :return
-  attr_accessor :revToday
   attr_accessor :separate
   attr_accessor :terms
-  attr_accessor :timeToday
   attr_accessor :usn
   attr_accessor :mod
+  # attr_accessor :newToday
+  # attr_accessor :lrnToday
+  # attr_accessor :revToday
+  # attr_accessor :timeToday
 
   validates :collection, :id, :name, presence: true
 
@@ -43,6 +43,7 @@ class Deck
   end   # class << self
 
   def initialize(attributes = nil)
+    reset_counters
     attributes ||= {}
     attributes.each do |attr, value|
       send "#{attr}=", value
@@ -61,8 +62,43 @@ class Deck
     @collection = Collection.find_by id: collection_id
   end
 
+  def currentDay
+    @lrnToday[0]
+  end
+
+  def currentDay=(value)
+    @lrnToday[0] = value
+    @newToday[0] = value
+    @revToday[0] = value
+    @timeToday[0] = value
+  end
+
   def new_record?
     id.blank?
+  end
+
+  def lrnToday
+    @lrnToday[1]
+  end
+
+  def lrnToday=(value)
+    if value.is_a? Array
+      @lrnToday = value
+    else
+      @lrnToday[1] = value
+    end
+  end
+
+  def newToday
+    @newToday[1]
+  end
+
+  def newToday=(value)
+    if value.is_a? Array
+      @newToday = value
+    else
+      @newToday[1] = value
+    end
   end
 
   def persisted?
@@ -71,6 +107,18 @@ class Deck
 
   def reload
     collection.reload.decks[id]
+  end
+
+  def revToday
+    @revToday[1]
+  end
+
+  def revToday=(value)
+    if value.is_a? Array
+      @revToday = value
+    else
+      @revToday[1] = value
+    end
   end
 
   def save
@@ -83,10 +131,26 @@ class Deck
     valid? and collection.save_deck! self
   end
 
+  def timeToday
+    @timeToday[1]
+  end
+
+  def timeToday=(value)
+    if value.is_a? Array
+      @timeToday = value
+    else
+      @timeToday[1] = value
+    end
+  end
+
   def to_hash
     {
       id: id,
       name: name,
+      lrnToday: @lrnToday,
+      newToday: @newToday,
+      revToday: @revToday,
+      timeToday: @timeToday,
       browserCollapsed: browserCollapsed,
       collapsed: collapsed,
       conf: conf,
@@ -95,15 +159,11 @@ class Deck
       dyn: dyn,
       extendNew: extendNew,
       extendRev: extendRev,
-      lrnToday: lrnToday,
       mid: mid,
-      newToday: newToday,
       resched: resched,
       :return => @return,
-      revToday: revToday,
       separate: separate,
       terms: terms,
-      timeToday: timeToday,
       usn: usn,
       mod: mod,
     }
@@ -116,7 +176,16 @@ class Deck
     valid? and collection.save_deck! self
   end
 
+  private
+
   def set_id!
     self.id ||= (Time.now.to_i * 1000).to_s
+  end
+
+  def reset_counters
+    @lrnToday = [0, 0]
+    @newToday = [0, 0]
+    @revToday = [0, 0]
+    @timeToday = [0, 0]
   end
 end

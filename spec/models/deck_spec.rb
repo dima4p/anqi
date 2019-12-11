@@ -96,6 +96,58 @@ describe Deck, type: :model do
     end
   end
 
+  describe '#currentDay' do
+    subject {deck.currentDay}
+
+    it 'returns @currentDay[1]' do
+      is_expected.to be deck.instance_variable_get(:@lrnToday)[0]
+    end
+  end
+
+  describe '#currentDay=' do
+    it 'returns @currentDay[1]' do
+      deck.currentDay = 11
+      expect(deck.instance_variable_get(:@lrnToday)[0]).to eq 11
+      expect(deck.instance_variable_get(:@newToday)[0]).to eq 11
+      expect(deck.instance_variable_get(:@revToday)[0]).to eq 11
+      expect(deck.instance_variable_get(:@timeToday)[0]).to eq 11
+    end
+  end
+
+  describe '#lrnToday' do
+    subject {deck.lrnToday}
+
+    it 'returns @lrnToday[1]' do
+      is_expected.to be deck.instance_variable_get(:@lrnToday)[1]
+    end
+  end
+
+  describe '#lrnToday=' do
+    subject {deck.instance_variable_get(:@lrnToday)}
+
+    it 'returns @lrnToday[1]' do
+      deck.lrnToday = 55
+      is_expected.to eq [0, 55]
+    end
+  end
+
+  describe '#newToday' do
+    subject {deck.newToday}
+
+    it 'returns @newToday[1]' do
+      is_expected.to be deck.instance_variable_get(:@newToday)[1]
+    end
+  end
+
+  describe '#newToday=' do
+    subject {deck.instance_variable_get(:@newToday)}
+
+    it 'returns @newToday[1]' do
+      deck.newToday = 55
+      is_expected.to eq [0, 55]
+    end
+  end
+
   describe "#persisted?" do
     subject {deck.persisted?}
 
@@ -125,6 +177,23 @@ describe Deck, type: :model do
     end
   end
 
+  describe '#revToday' do
+    subject {deck.revToday}
+
+    it 'returns @revToday[1]' do
+      is_expected.to be deck.instance_variable_get(:@revToday)[1]
+    end
+  end
+
+  describe '#revToday=' do
+    subject {deck.instance_variable_get(:@revToday)}
+
+    it 'returns @revToday[1]' do
+      deck.revToday = 55
+      is_expected.to eq [0, 55]
+    end
+  end
+
   describe "#save!" do
     let(:collection) {deck.collection}
 
@@ -139,6 +208,23 @@ describe Deck, type: :model do
       deck.id = nil
       deck.save!
       expect(deck.id).to be_a String
+    end
+  end
+
+  describe '#timeToday' do
+    subject {deck.timeToday}
+
+    it 'returns @timeToday[1]' do
+      is_expected.to be deck.instance_variable_get(:@timeToday)[1]
+    end
+  end
+
+  describe '#timeToday=' do
+    subject {deck.instance_variable_get(:@timeToday)}
+
+    it 'returns @timeToday[1]' do
+      deck.timeToday = 55
+      is_expected.to eq [0, 55]
     end
   end
 
