@@ -1,0 +1,39 @@
+---
+en:
+  activerecord:
+    models:
+      note: "Note"
+    attributes:
+      note: 
+        guid: "Guid"
+        mid: "Mid"
+        mod: "Mod"
+        usn: "Usn"
+        tags: "Tags"
+        flds: "Flds"
+        sfld: "Sfld"
+        csum: "Csum"
+        flags: "Flags"
+        data: "Data"
+  helpers:
+    submit:
+      note:
+        create: "Create note"
+        update: "Update note"
+  notes:
+    edit:
+      title: "Editing of the note"
+    form:
+      note: "Note"
+    index:
+      confirm: "Are you sure you want to delete the note?"
+      empty: "No notes found"
+      new_note: "Add a new note"
+      title: "Listing of notes"
+    new:
+      title: "Adding a new note"
+    show:
+      title: "Note details"
+    was_created: "Note was successfully added"
+    was_deleted: "Note was successfully deleted"
+    was_updated: "Note was successfully updated"

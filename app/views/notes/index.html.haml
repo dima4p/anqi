@@ -1,0 +1,92 @@
+- title t('.title')
+
+- if can? :new, Note
+  %p.nav= link_to t('.new_note'), new_note_path, class: 'new'
+
+- if @notes.limit(1).size > 0
+  - if @grid
+    = grid @grid do |g|
+      - g.column name: Note.human_attribute_name(:guid),
+        class: 'guid', attribute: 'guid' do |note|
+        - note.guid
+      - g.column name: Note.human_attribute_name(:mid),
+        class: 'mid', attribute: 'mid' do |note|
+        - note.mid
+      - g.column name: Note.human_attribute_name(:mod),
+        class: 'mod', attribute: 'mod' do |note|
+        - note.mod
+      - g.column name: Note.human_attribute_name(:usn),
+        class: 'usn', attribute: 'usn' do |note|
+        - note.usn
+      - g.column name: Note.human_attribute_name(:tags),
+        class: 'tags', attribute: 'tags' do |note|
+        - note.tags
+      - g.column name: Note.human_attribute_name(:flds),
+        class: 'flds', attribute: 'flds' do |note|
+        - note.flds
+      - g.column name: Note.human_attribute_name(:sfld),
+        class: 'sfld', attribute: 'sfld' do |note|
+        - note.sfld
+      - g.column name: Note.human_attribute_name(:csum),
+        class: 'csum', attribute: 'csum' do |note|
+        - note.csum
+      - g.column name: Note.human_attribute_name(:flags),
+        class: 'flags', attribute: 'flags' do |note|
+        - note.flags
+      - g.column name: Note.human_attribute_name(:data),
+        class: 'data', attribute: 'data' do |note|
+        - note.data
+      - g.column do |note|
+        - if can? :show, note
+          - link_to t('show'), note, class: 'show'
+      - g.column do |note|
+        - if can? :edit, note
+          - link_to t('edit'), edit_note_path(note), class: 'edit'
+      - g.column do |note|
+        - if can? :destroy, note
+          - link_to t('destroy'), note,
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
+            method: :delete, class: 'destroy'
+  -else
+    %table
+      %thead
+        %tr
+          %th= Note.human_attribute_name :guid
+          %th= Note.human_attribute_name :mid
+          %th= Note.human_attribute_name :mod
+          %th= Note.human_attribute_name :usn
+          %th= Note.human_attribute_name :tags
+          %th= Note.human_attribute_name :flds
+          %th= Note.human_attribute_name :sfld
+          %th= Note.human_attribute_name :csum
+          %th= Note.human_attribute_name :flags
+          %th= Note.human_attribute_name :data
+          %th{colspan: 3}= t 'actions'
+
+      %tbody
+        - @notes.each do |note|
+          %tr{class: cycle(:odd, :even)}
+            %td.guid= note.guid
+            %td.mid= note.mid
+            %td.mod= note.mod
+            %td.usn= note.usn
+            %td.tags= note.tags
+            %td.flds= note.flds
+            %td.sfld= note.sfld
+            %td.csum= note.csum
+            %td.flags= note.flags
+            %td.data= note.data
+            %td.action
+              - if can? :show, note
+                = link_to t('show'), note, class: 'show'
+            %td.action
+              - if can? :edit, note
+                = link_to t('edit'), edit_note_path(note), class: 'edit'
+            %td.action
+              - if can? :destroy, note
+                = link_to t('destroy'), note,
+                  data: {confirm: t('.confirm', default: 'Are you sure?')},
+                  method: :delete, class: 'destroy'
+- else
+  .empty
+    = t '.empty'

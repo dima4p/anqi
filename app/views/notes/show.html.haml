@@ -1,0 +1,29 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Note
+    = link_to t('back'), notes_path, class: 'index'
+  - if can? :edit, @note
+    = link_to t('edit'), edit_note_path(@note), class: 'edit'
+
+%dl
+  %dt= Note.human_attribute_name :guid
+  %dd.guid= @note.guid
+  %dt= Note.human_attribute_name :mid
+  %dd.mid= @note.mid
+  %dt= Note.human_attribute_name :mod
+  %dd.mod= @note.mod
+  %dt= Note.human_attribute_name :usn
+  %dd.usn= @note.usn
+  %dt= Note.human_attribute_name :tags
+  %dd.tags= @note.tags
+  %dt= Note.human_attribute_name :flds
+  %dd.flds= @note.flds
+  %dt= Note.human_attribute_name :sfld
+  %dd.sfld= @note.sfld
+  %dt= Note.human_attribute_name :csum
+  %dd.csum= @note.csum
+  %dt= Note.human_attribute_name :flags
+  %dd.flags= @note.flags
+  %dt= Note.human_attribute_name :data
+  %dd.data= @note.data

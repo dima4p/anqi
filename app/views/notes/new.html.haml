@@ -1,0 +1,6 @@
+- title t('.title')
+
+- if can? :index, Note
+  %p.nav= link_to t('back'), notes_path, class: 'index'
+
+= render 'form', note: @note

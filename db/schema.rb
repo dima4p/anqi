@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_205753) do
+ActiveRecord::Schema.define(version: 2019_12_11_211142) do
 
   create_table "col", force: :cascade do |t|
     t.integer "crt", null: false
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 2019_10_20_205753) do
     t.text "decks", null: false
     t.text "dconf", null: false
     t.text "tags", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "guid"
+    t.integer "mid"
+    t.integer "mod"
+    t.integer "usn"
+    t.text "tags"
+    t.text "flds"
+    t.integer "sfld"
+    t.integer "csum"
+    t.integer "flags"
+    t.text "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
