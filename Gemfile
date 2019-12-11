@@ -50,7 +50,7 @@ gem 'cancancan'
 # views
 gem 'haml-rails'
 # gem 'nested_form'
-# gem 'simple_form'
+gem 'simple_form'
 gem 'wice_grid'
 
 
