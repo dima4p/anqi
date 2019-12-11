@@ -4,6 +4,7 @@ class Deck
 
   extend ActiveModel::Translation
   # include ActiveModel::AttributeMethods
+  include ActiveModel::Conversion
   include ActiveModel::Validations
 
   attr_reader   :collection
@@ -35,6 +36,10 @@ class Deck
     def all(collection_id = 1)
       Collection.find(collection_id).decks.values
     end
+
+    def find(id, collection_id = 1)
+      Collection.find(collection_id).decks[id]
+    end
   end   # class << self
 
   def initialize(attributes = nil)
@@ -42,6 +47,10 @@ class Deck
     attributes.each do |attr, value|
       send "#{attr}=", value
     end
+  end
+
+  def ==(other)
+    to_hash == other.to_hash
   end
 
   def collection=(collection)
@@ -52,9 +61,26 @@ class Deck
     @collection = Collection.find_by id: collection_id
   end
 
+  def new_record?
+    id.blank?
+  end
+
+  def persisted?
+    id.present?
+  end
+
+  def reload
+    collection.reload.decks[id]
+  end
+
+  def save
+    set_id!
+    valid? and collection.save_deck self
+  end
+
   def save!
-    self.id ||= (Time.now.to_i * 1000).to_s
-    collection.save_deck! self
+    set_id!
+    valid? and collection.save_deck! self
   end
 
   def to_hash
@@ -65,6 +91,7 @@ class Deck
       collapsed: collapsed,
       conf: conf,
       delays: delays,
+      desc: desc,
       dyn: dyn,
       extendNew: extendNew,
       extendRev: extendRev,
@@ -80,5 +107,16 @@ class Deck
       usn: usn,
       mod: mod,
     }
+  end
+
+  def update(attributes = {})
+    attributes.each do |attr, value|
+      send "#{attr}=", value
+    end
+    valid? and collection.save_deck! self
+  end
+
+  def set_id!
+    self.id ||= (Time.now.to_i * 1000).to_s
   end
 end

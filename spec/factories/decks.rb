@@ -8,11 +8,11 @@ FactoryBot.define do
     sequence(:delays) {|n| "Delays#{format '%03d', n}" }
     sequence(:desc) {|n| "Desc#{format '%03d', n}" }
     sequence(:dyn) {|n| "Dyn#{format '%03d', n}" }
-    sequence(:extendNew) {|n| "Extendnew#{format '%03d', n}" }
-    sequence(:extendRev) {|n| "Extendrev#{format '%03d', n}" }
-    sequence(:lrnToday) {|n| "Lrntoday#{format '%03d', n}" }
+    sequence(:extendNew) {|n| 100 + n }
+    sequence(:extendRev) {|n| 101 + n }
+    sequence(:lrnToday) {|n| [n * 100, 200 + n] }
     sequence(:mid) {|n| "Mid#{format '%03d', n}" }
-    sequence(:newToday) {|n| "Newtoday#{format '%03d', n}" }
+    sequence(:newToday) {|n| [n * 100, 150 + n] }
     sequence(:resched) {|n| "Resched#{format '%03d', n}" }
     sequence(:return) {|n| "Return#{format '%03d', n}" }
     sequence(:revToday) {|n| "Revtoday#{format '%03d', n}" }
