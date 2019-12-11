@@ -53,6 +53,10 @@
           - link_to t('destroy'), collection,
             data: {confirm: t('.confirm', default: 'Are you sure?')},
             method: :delete, class: 'destroy'
+      - g.column do |collection|
+        - if can? :index_decks, collection
+          - link_to t('.decks'), collection_decks_path(collection_id: collection.id),
+              class: 'index'
   -else
     %table
       %thead

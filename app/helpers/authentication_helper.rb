@@ -44,14 +44,6 @@ module AuthenticationHelper
     session[:return_to] = nil
   end
 
-  def can?(*args)
-    true
-  end
-
-  def cannot?(*args)
-    false
-  end
-
   private
 
   def store_target_location

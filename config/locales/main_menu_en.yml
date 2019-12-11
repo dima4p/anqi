@@ -1,0 +1,6 @@
+---
+en:
+  layouts:
+    main_menu:
+      collections: Collections
+      decks: Decks

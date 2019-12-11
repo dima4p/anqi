@@ -29,6 +29,7 @@ en:
       collection: "Collection"
     index:
       confirm: "Are you sure you want to delete the collection?"
+      decks: "Decks"
       empty: "No collections found"
       new_collection: "Add a new collection"
       title: "Listing of collections"
