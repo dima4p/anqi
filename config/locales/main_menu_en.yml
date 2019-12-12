@@ -2,6 +2,7 @@
 en:
   layouts:
     main_menu:
+      cards: Cards
       collections: Collections
       decks: Decks
       notes: Notes

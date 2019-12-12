@@ -10,11 +10,10 @@ describe CardsController, type: :controller do
   # adjust the attributes here as well. The list could not be empty.
   let(:card) {create :card}
 
-  let(:valid_attributes) {attributes_for(:card).slice *%i[nid]}
+  let(:valid_attributes) {attributes_for(:card).slice *%i[nid did ord mod usn type queue due ivl factor reps lapses left odue odid flags data]}
 
   let(:invalid_attributes) do
-    # {nid: ''}
-    skip("Add a hash of attributes invalid for your model")
+    {data: ''}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -103,7 +102,7 @@ describe CardsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) { {nid: 'New value'} }
+      let(:new_attributes) { {data: 'New value'} }
 
       it "updates the requested card" do
         # expect_any_instance_of(Card)
@@ -114,7 +113,7 @@ describe CardsController, type: :controller do
             session: valid_session
         card.reload
         # skip("Add assertions for updated state")
-        expect(card.nid).to eq 'New value'
+        expect(card.data).to eq 'New value'
       end
 
       it "assigns the requested card as @card" do

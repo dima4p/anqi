@@ -1,6 +1,34 @@
+# == Schema Information
+#
+# Table name: cards
+#
+#  id         :integer          not null, primary key
+#  nid        :integer
+#  did        :integer
+#  ord        :integer
+#  mod        :integer
+#  usn        :integer
+#  type       :integer
+#  queue      :integer
+#  due        :integer
+#  ivl        :integer
+#  factor     :integer
+#  reps       :integer
+#  lapses     :integer
+#  left       :integer
+#  odue       :integer
+#  odid       :integer
+#  flags      :integer
+#  data       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 FactoryBot.define do
   factory :card do
-    sequence(:nid) {|n| "1#{format '%03d', n}" }
+    sequence(:nid) do
+      create(:note).id
+    end
     sequence(:did) {|n| "2#{format '%03d', n}" }
     sequence(:ord) {|n| "3#{format '%03d', n}" }
     sequence(:mod) {|n| "4#{format '%03d', n}" }
