@@ -40,6 +40,13 @@ class Deck
     def find(id, collection_id = 1)
       Collection.find(collection_id).decks[id]
     end
+
+    def find_by_name(deck_name)
+      Collection.all.detect do |collection|
+        id, deck = collection.decks.detect{|k, d| d.name == deck_name}
+        deck and return deck
+      end
+    end
   end   # class << self
 
   def initialize(attributes = nil)
@@ -91,6 +98,10 @@ class Deck
 
   def newToday
     @newToday[1]
+  end
+
+  def notes
+    Note.where mid: mid
   end
 
   def newToday=(value)

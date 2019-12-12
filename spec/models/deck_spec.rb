@@ -45,7 +45,7 @@ describe Deck, type: :model do
       end
     end
 
-    describe ".find" do
+    describe ".find(id)" do
       let(:collection) {create :collection_with_decks}
       let!(:deck) {collection.decks.values.first}
 
@@ -61,6 +61,29 @@ describe Deck, type: :model do
 
       context "when a corresponding deck does not exist" do
         let(:deck_id) {0}
+
+        it "returns nil" do
+          is_expected.to be_nil
+        end
+      end
+    end
+
+    describe '.find_by_name(deck_name)' do
+      let(:collection) {create :collection_with_decks}
+      let!(:deck) {collection.decks.values.first}
+
+      subject {described_class.find_by_name deck_name}
+
+      context "when the deck_name exists" do
+        let(:deck_name) {deck.name}
+
+        it "returns the Deck with the given name" do
+          is_expected.to eq deck
+        end
+      end
+
+      context "when the deck_name does not exist" do
+        let(:deck_name) {deck.name + '_'}
 
         it "returns nil" do
           is_expected.to be_nil
@@ -145,6 +168,16 @@ describe Deck, type: :model do
     it 'returns @newToday[1]' do
       deck.newToday = 55
       is_expected.to eq [0, 55]
+    end
+  end
+
+  describe "#notes" do
+    let(:note) {create :note, mid: deck.mid}
+
+    subject {deck.notes}
+
+    it 'returns an ActiveRecord::Relation' do
+      is_expected.to be_an ActiveRecord::Relation
     end
   end
 
