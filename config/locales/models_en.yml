@@ -1,0 +1,22 @@
+---
+en:
+  activemodel:
+    models:
+      model: "Model"
+    attributes:
+      model:
+        css: CSS
+        did:  "Deck id"
+        flds: Fields
+        id: Id
+        latexPost: "Latex post"
+        latexPre: "Latex pre"
+        mod: Modified
+        name: Name
+        req: "Required fields"
+        sortf: "Sorted field"
+        tags: Tags
+        tmpls: Templates
+        type: Type
+        usn: "Used number"
+        vers: Versions

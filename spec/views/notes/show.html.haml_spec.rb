@@ -10,7 +10,7 @@ describe "notes/show", type: :view do
 
   it "renders attributes in dl>dd" do
     render
-    assert_select 'dl>dd.guid', text: Regexp.new(note.guid.to_s)
+    assert_select 'dl>dd.guid', text: note.guid.to_s
     assert_select 'dl>dd.mid', text: Regexp.new(note.mid.to_s)
     assert_select 'dl>dd.mod', text: Time.at(note.mod).to_s
     assert_select 'dl>dd.usn', text: Regexp.new(note.usn.to_s)

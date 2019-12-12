@@ -5,18 +5,18 @@ en:
       collection: "Collection"
     attributes:
       collection: 
-        crt: "Created"
-        mod: "Modified"
-        scm: "Schema modified"
-        ver: "Scheduler Version"
-        dty: "Dirty"
-        usn: "Used number"
-        ls: "Last synched"
         conf: "Configuration"
-        models: "Models"
-        decks: "Decks"
+        crt: "Created"
         dconf: "Decks configuration"
+        decks: "Decks"
+        dty: "Dirty"
+        ls: "Last synched"
+        mod: "Modified"
+        models: "Models"
+        scm: "Schema modified"
         tags: "Tags"
+        usn: "Used number"
+        ver: "Scheduler Version"
   helpers:
     submit:
       collection:
