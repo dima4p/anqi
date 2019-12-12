@@ -21,6 +21,9 @@ class Note < ApplicationRecord
 
   establish_connection ActiveRecord::Base.configurations["anki"] if Rails.env.development?
 
+  validates :guid, :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data,
+      presence: true
+
   scope :ordered, -> { order(:guid) }
 
 end

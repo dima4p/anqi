@@ -10,11 +10,10 @@ describe NotesController, type: :controller do
   # adjust the attributes here as well. The list could not be empty.
   let(:note) {create :note}
 
-  let(:valid_attributes) {attributes_for(:note).slice *%w[guid].map(&:to_sym)}
+  let(:valid_attributes) {attributes_for(:note).slice *%i[guid mid mod usn tags flds sfld csum flags data]}
 
   let(:invalid_attributes) do
-    # {guid: ''}
-    skip("Add a hash of attributes invalid for your model")
+    {guid: ''}
   end
 
   # This should return the minimal set of values that should be in the session

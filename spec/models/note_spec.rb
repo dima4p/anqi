@@ -23,6 +23,16 @@ describe Note, type: :model do
 
   describe 'validations' do
     it { should be_valid }
+    it { should validate_presence_of :guid }
+    it { should validate_presence_of :mid }
+    it { should validate_presence_of :mod }
+    it { should validate_presence_of :usn }
+    it { should validate_presence_of :tags }
+    it { should validate_presence_of :flds }
+    it { should validate_presence_of :sfld }
+    it { should validate_presence_of :csum }
+    it { should validate_presence_of :flags }
+    it { should validate_presence_of :data }
   end   # validations
 
   describe 'class methods' do
