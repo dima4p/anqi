@@ -6,7 +6,7 @@
 - if @notes.limit(1).size > 0
   - if @grid
     = grid @grid do |g|
-      - g.column name: Note.human_attribute_name(:guid),
+      -# g.column name: Note.human_attribute_name(:guid),
         class: 'guid', attribute: 'guid' do |note|
         - note.guid
       - g.column name: Note.human_attribute_name(:mid),
@@ -14,14 +14,14 @@
         - note.mid
       - g.column name: Note.human_attribute_name(:mod),
         class: 'mod', attribute: 'mod' do |note|
-        - note.mod
+        - Time.at note.mod
       - g.column name: Note.human_attribute_name(:usn),
         class: 'usn', attribute: 'usn' do |note|
         - note.usn
       - g.column name: Note.human_attribute_name(:tags),
         class: 'tags', attribute: 'tags' do |note|
         - note.tags
-      - g.column name: Note.human_attribute_name(:flds),
+      -# g.column name: Note.human_attribute_name(:flds),
         class: 'flds', attribute: 'flds' do |note|
         - note.flds
       - g.column name: Note.human_attribute_name(:sfld),
@@ -51,12 +51,12 @@
     %table
       %thead
         %tr
-          %th= Note.human_attribute_name :guid
+          -# %th= Note.human_attribute_name :guid
           %th= Note.human_attribute_name :mid
           %th= Note.human_attribute_name :mod
           %th= Note.human_attribute_name :usn
           %th= Note.human_attribute_name :tags
-          %th= Note.human_attribute_name :flds
+          -# %th= Note.human_attribute_name :flds
           %th= Note.human_attribute_name :sfld
           %th= Note.human_attribute_name :csum
           %th= Note.human_attribute_name :flags
@@ -66,12 +66,12 @@
       %tbody
         - @notes.each do |note|
           %tr{class: cycle(:odd, :even)}
-            %td.guid= note.guid
+            -# %td.guid= note.guid
             %td.mid= note.mid
-            %td.mod= note.mod
+            %td.mod= Time.at note.mod
             %td.usn= note.usn
             %td.tags= note.tags
-            %td.flds= note.flds
+            -# %td.flds= note.flds
             %td.sfld= note.sfld
             %td.csum= note.csum
             %td.flags= note.flags

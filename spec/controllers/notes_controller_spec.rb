@@ -10,10 +10,10 @@ describe NotesController, type: :controller do
   # adjust the attributes here as well. The list could not be empty.
   let(:note) {create :note}
 
-  let(:valid_attributes) {attributes_for(:note).slice *%i[guid mid mod usn tags flds sfld csum flags data]}
+  let(:valid_attributes) {attributes_for(:note).slice *%i[mid mod usn tags flds sfld csum flags data]}
 
   let(:invalid_attributes) do
-    {guid: ''}
+    {data: ''}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -102,7 +102,7 @@ describe NotesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) { {guid: 'New value'} }
+      let(:new_attributes) { {data: 'New value'} }
 
       it "updates the requested note" do
         # expect_any_instance_of(Note)
@@ -113,7 +113,7 @@ describe NotesController, type: :controller do
             session: valid_session
         note.reload
         # skip("Add assertions for updated state")
-        expect(note.guid).to eq 'New value'
+        expect(note.data).to eq 'New value'
       end
 
       it "assigns the requested note as @note" do

@@ -6,13 +6,14 @@ en:
     attributes:
       note: 
         guid: "Guid"
-        mid: "Mid"
-        mod: "Mod"
+        mid: "Model id"
+        mod: "Modified"
         usn: "Usn"
         tags: "Tags"
-        flds: "Flds"
+        fields: "Fields"
+        flds: "Joined Fields"
         sfld: "Sfld"
-        csum: "Csum"
+        csum: "Control sum"
         flags: "Flags"
         data: "Data"
   helpers:

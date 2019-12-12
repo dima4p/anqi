@@ -12,7 +12,7 @@ describe "notes/new", type: :view do
     render
 
     assert_select "form[action='#{notes_path}'][method='post']" do
-      assert_select 'textarea#note_guid[name=?]', 'note[guid]'
+      assert_select 'textarea#note_guid[name=?]', 'note[guid]', count: 0
       assert_select 'input#note_mid[name=?]', 'note[mid]'
       assert_select 'input#note_mod[name=?]', 'note[mod]'
       assert_select 'input#note_usn[name=?]', 'note[usn]'

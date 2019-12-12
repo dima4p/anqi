@@ -19,11 +19,10 @@ require 'rails_helper'
 
 describe Note, type: :model do
 
-  subject { create :note }
+  subject(:note) { create :note }
 
   describe 'validations' do
     it { should be_valid }
-    it { should validate_presence_of :guid }
     it { should validate_presence_of :mid }
     it { should validate_presence_of :mod }
     it { should validate_presence_of :usn }
@@ -47,4 +46,11 @@ describe Note, type: :model do
     end   # scopes
   end   # class methods
 
+  describe "#fields" do
+    subject {note.fields}
+
+    it 'returns an Array' do
+      is_expected.to be_an Array
+    end
+  end
 end

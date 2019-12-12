@@ -74,7 +74,7 @@ class NotesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def note_params
     list = [
-      :guid, :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data
+      :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data
     ]
     params.require(:note).permit(*list)
   end
