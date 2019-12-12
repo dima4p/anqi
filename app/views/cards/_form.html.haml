@@ -1,0 +1,26 @@
+-# frozen_string_literal: true
+= simple_form_for(@card) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :nid
+    = f.input :did
+    = f.input :ord
+    = f.input :mod
+    = f.input :usn
+    = f.input :type
+    = f.input :queue
+    = f.input :due
+    = f.input :ivl
+    = f.input :factor
+    = f.input :reps
+    = f.input :lapses
+    = f.input :left
+    = f.input :odue
+    = f.input :odid
+    = f.input :flags
+    = f.input :data
+
+  .form-actions
+    = f.button :submit

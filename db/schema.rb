@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_211142) do
+ActiveRecord::Schema.define(version: 2019_12_12_213320) do
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "nid"
+    t.integer "did"
+    t.integer "ord"
+    t.integer "mod"
+    t.integer "usn"
+    t.integer "type"
+    t.integer "queue"
+    t.integer "due"
+    t.integer "ivl"
+    t.integer "factor"
+    t.integer "reps"
+    t.integer "lapses"
+    t.integer "left"
+    t.integer "odue"
+    t.integer "odid"
+    t.integer "flags"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "col", force: :cascade do |t|
     t.integer "crt", null: false

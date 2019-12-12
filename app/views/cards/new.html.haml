@@ -1,0 +1,6 @@
+- title t('.title')
+
+- if can? :index, Card
+  %p.nav= link_to t('back'), cards_path, class: 'index'
+
+= render 'form', card: @card

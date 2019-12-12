@@ -1,0 +1,127 @@
+- title t('.title')
+
+- if can? :new, Card
+  %p.nav= link_to t('.new_card'), new_card_path, class: 'new'
+
+- if @cards.limit(1).size > 0
+  - if @grid
+    = grid @grid do |g|
+      - g.column name: Card.human_attribute_name(:nid),
+        class: 'nid', attribute: 'nid' do |card|
+        - card.nid
+      - g.column name: Card.human_attribute_name(:did),
+        class: 'did', attribute: 'did' do |card|
+        - card.did
+      - g.column name: Card.human_attribute_name(:ord),
+        class: 'ord', attribute: 'ord' do |card|
+        - card.ord
+      - g.column name: Card.human_attribute_name(:mod),
+        class: 'mod', attribute: 'mod' do |card|
+        - card.mod
+      - g.column name: Card.human_attribute_name(:usn),
+        class: 'usn', attribute: 'usn' do |card|
+        - card.usn
+      - g.column name: Card.human_attribute_name(:type),
+        class: 'type', attribute: 'type' do |card|
+        - card.type
+      - g.column name: Card.human_attribute_name(:queue),
+        class: 'queue', attribute: 'queue' do |card|
+        - card.queue
+      - g.column name: Card.human_attribute_name(:due),
+        class: 'due', attribute: 'due' do |card|
+        - card.due
+      - g.column name: Card.human_attribute_name(:ivl),
+        class: 'ivl', attribute: 'ivl' do |card|
+        - card.ivl
+      - g.column name: Card.human_attribute_name(:factor),
+        class: 'factor', attribute: 'factor' do |card|
+        - card.factor
+      - g.column name: Card.human_attribute_name(:reps),
+        class: 'reps', attribute: 'reps' do |card|
+        - card.reps
+      - g.column name: Card.human_attribute_name(:lapses),
+        class: 'lapses', attribute: 'lapses' do |card|
+        - card.lapses
+      - g.column name: Card.human_attribute_name(:left),
+        class: 'left', attribute: 'left' do |card|
+        - card.left
+      - g.column name: Card.human_attribute_name(:odue),
+        class: 'odue', attribute: 'odue' do |card|
+        - card.odue
+      - g.column name: Card.human_attribute_name(:odid),
+        class: 'odid', attribute: 'odid' do |card|
+        - card.odid
+      - g.column name: Card.human_attribute_name(:flags),
+        class: 'flags', attribute: 'flags' do |card|
+        - card.flags
+      - g.column name: Card.human_attribute_name(:data),
+        class: 'data', attribute: 'data' do |card|
+        - card.data
+      - g.column do |card|
+        - if can? :show, card
+          - link_to t('show'), card, class: 'show'
+      - g.column do |card|
+        - if can? :edit, card
+          - link_to t('edit'), edit_card_path(card), class: 'edit'
+      - g.column do |card|
+        - if can? :destroy, card
+          - link_to t('destroy'), card,
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
+            method: :delete, class: 'destroy'
+  -else
+    %table
+      %thead
+        %tr
+          %th= Card.human_attribute_name :nid
+          %th= Card.human_attribute_name :did
+          %th= Card.human_attribute_name :ord
+          %th= Card.human_attribute_name :mod
+          %th= Card.human_attribute_name :usn
+          %th= Card.human_attribute_name :type
+          %th= Card.human_attribute_name :queue
+          %th= Card.human_attribute_name :due
+          %th= Card.human_attribute_name :ivl
+          %th= Card.human_attribute_name :factor
+          %th= Card.human_attribute_name :reps
+          %th= Card.human_attribute_name :lapses
+          %th= Card.human_attribute_name :left
+          %th= Card.human_attribute_name :odue
+          %th= Card.human_attribute_name :odid
+          %th= Card.human_attribute_name :flags
+          %th= Card.human_attribute_name :data
+          %th{colspan: 3}= t 'actions'
+
+      %tbody
+        - @cards.each do |card|
+          %tr{class: cycle(:odd, :even)}
+            %td.nid= card.nid
+            %td.did= card.did
+            %td.ord= card.ord
+            %td.mod= card.mod
+            %td.usn= card.usn
+            %td.type= card.type
+            %td.queue= card.queue
+            %td.due= card.due
+            %td.ivl= card.ivl
+            %td.factor= card.factor
+            %td.reps= card.reps
+            %td.lapses= card.lapses
+            %td.left= card.left
+            %td.odue= card.odue
+            %td.odid= card.odid
+            %td.flags= card.flags
+            %td.data= card.data
+            %td.action
+              - if can? :show, card
+                = link_to t('show'), card, class: 'show'
+            %td.action
+              - if can? :edit, card
+                = link_to t('edit'), edit_card_path(card), class: 'edit'
+            %td.action
+              - if can? :destroy, card
+                = link_to t('destroy'), card,
+                  data: {confirm: t('.confirm', default: 'Are you sure?')},
+                  method: :delete, class: 'destroy'
+- else
+  .empty
+    = t '.empty'

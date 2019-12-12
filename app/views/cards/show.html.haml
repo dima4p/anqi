@@ -1,0 +1,43 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Card
+    = link_to t('back'), cards_path, class: 'index'
+  - if can? :edit, @card
+    = link_to t('edit'), edit_card_path(@card), class: 'edit'
+
+%dl
+  %dt= Card.human_attribute_name :nid
+  %dd.nid= @card.nid
+  %dt= Card.human_attribute_name :did
+  %dd.did= @card.did
+  %dt= Card.human_attribute_name :ord
+  %dd.ord= @card.ord
+  %dt= Card.human_attribute_name :mod
+  %dd.mod= @card.mod
+  %dt= Card.human_attribute_name :usn
+  %dd.usn= @card.usn
+  %dt= Card.human_attribute_name :type
+  %dd.type= @card.type
+  %dt= Card.human_attribute_name :queue
+  %dd.queue= @card.queue
+  %dt= Card.human_attribute_name :due
+  %dd.due= @card.due
+  %dt= Card.human_attribute_name :ivl
+  %dd.ivl= @card.ivl
+  %dt= Card.human_attribute_name :factor
+  %dd.factor= @card.factor
+  %dt= Card.human_attribute_name :reps
+  %dd.reps= @card.reps
+  %dt= Card.human_attribute_name :lapses
+  %dd.lapses= @card.lapses
+  %dt= Card.human_attribute_name :left
+  %dd.left= @card.left
+  %dt= Card.human_attribute_name :odue
+  %dd.odue= @card.odue
+  %dt= Card.human_attribute_name :odid
+  %dd.odid= @card.odid
+  %dt= Card.human_attribute_name :flags
+  %dd.flags= @card.flags
+  %dt= Card.human_attribute_name :data
+  %dd.data= @card.data

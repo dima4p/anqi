@@ -1,0 +1,46 @@
+---
+en:
+  activerecord:
+    models:
+      card: "Card"
+    attributes:
+      card: 
+        nid: "Nid"
+        did: "Did"
+        ord: "Ord"
+        mod: "Mod"
+        usn: "Usn"
+        type: "Type"
+        queue: "Queue"
+        due: "Due"
+        ivl: "Ivl"
+        factor: "Factor"
+        reps: "Reps"
+        lapses: "Lapses"
+        left: "Left"
+        odue: "Odue"
+        odid: "Odid"
+        flags: "Flags"
+        data: "Data"
+  helpers:
+    submit:
+      card:
+        create: "Create card"
+        update: "Update card"
+  cards:
+    edit:
+      title: "Editing of the card"
+    form:
+      card: "Card"
+    index:
+      confirm: "Are you sure you want to delete the card?"
+      empty: "No cards found"
+      new_card: "Add a new card"
+      title: "Listing of cards"
+    new:
+      title: "Adding a new card"
+    show:
+      title: "Card details"
+    was_created: "Card was successfully added"
+    was_deleted: "Card was successfully deleted"
+    was_updated: "Card was successfully updated"
