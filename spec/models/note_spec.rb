@@ -53,4 +53,12 @@ describe Note, type: :model do
       is_expected.to be_an Array
     end
   end
+
+  describe "#model" do
+    subject {note.model}
+
+    it 'returns a corresponding Model instance' do
+      is_expected.to be_a Model
+    end
+  end
 end

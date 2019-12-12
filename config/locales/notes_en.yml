@@ -5,17 +5,18 @@ en:
       note: "Note"
     attributes:
       note: 
+        csum: "Control sum"
+        data: "Data"
+        fields: "Fields"
+        flags: "Flags"
+        flds: "Joined Fields"
         guid: "Guid"
         mid: "Model id"
+        model_name: "Model name"
         mod: "Modified"
-        usn: "Usn"
+        sfld: "Sorted field"
         tags: "Tags"
-        fields: "Fields"
-        flds: "Joined Fields"
-        sfld: "Sfld"
-        csum: "Control sum"
-        flags: "Flags"
-        data: "Data"
+        usn: "Used number"
   helpers:
     submit:
       note:

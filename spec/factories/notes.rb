@@ -17,7 +17,10 @@
 
 FactoryBot.define do
   factory :note do
-    sequence(:mid) {|n| 1342699000000 + n }
+    sequence(:mid) do
+      collection = Collection.first || create(:collection)
+      collection.models.keys.first
+    end
     sequence(:mod) {|n| 1342699000 + n }
     sequence(:usn) {|n| "3#{format '%03d', n}" }
     sequence(:tags) {|n| "Tags#{format '%03d', n}" }

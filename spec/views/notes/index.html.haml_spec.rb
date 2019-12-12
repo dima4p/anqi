@@ -19,10 +19,10 @@ describe "notes/index", type: :view do
     assert_select 'tr>td.usn', text: note.usn.to_s, count: 1
     assert_select 'tr>td.tags', text: note.tags.to_s, count: 1
     assert_select 'tr>td.flds', text: note.flds.to_s, count: 0
-    assert_select 'tr>td.sfld', text: note.sfld.to_s, count: 1
+    assert_select 'tr>td.sfld', text: note.sfld.to_s, count: 0
     assert_select 'tr>td.csum', text: note.csum.to_s, count: 1
     assert_select 'tr>td.flags', text: note.flags.to_s, count: 1
-    assert_select 'tr>td.data', text: note.data.to_s, count: 1
+    assert_select 'tr>td.data', text: note.data.to_s, count: 0
   end
 
   it "renders a list of notes in WiceGrid" do
@@ -35,9 +35,9 @@ describe "notes/index", type: :view do
     assert_select 'tr>td.usn', text: note.usn.to_s, count: 1
     assert_select 'tr>td.tags', text: note.tags.to_s, count: 1
     assert_select 'tr>td.flds', text: note.flds.to_s, count: 0
-    assert_select 'tr>td.sfld', text: note.sfld.to_s, count: 1
+    assert_select 'tr>td.sfld', text: note.sfld.to_s, count: 0
     assert_select 'tr>td.csum', text: note.csum.to_s, count: 1
     assert_select 'tr>td.flags', text: note.flags.to_s, count: 1
-    assert_select 'tr>td.data', text: note.data.to_s, count: 1
+    assert_select 'tr>td.data', text: note.data.to_s, count: 0
   end
 end

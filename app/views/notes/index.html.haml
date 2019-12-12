@@ -12,11 +12,14 @@
       - g.column name: Note.human_attribute_name(:mid),
         class: 'mid', attribute: 'mid' do |note|
         - note.mid
+      - g.column name: Note.human_attribute_name(:model_name),
+        class: 'model_name', attribute: 'mid' do |note|
+        - note.model.name
       - g.column name: Note.human_attribute_name(:mod),
         class: 'mod', attribute: 'mod' do |note|
         - Time.at note.mod
       - g.column name: Note.human_attribute_name(:usn),
-        class: 'usn', attribute: 'usn' do |note|
+        class: 'usn numeric', attribute: 'usn' do |note|
         - note.usn
       - g.column name: Note.human_attribute_name(:tags),
         class: 'tags', attribute: 'tags' do |note|
@@ -24,16 +27,16 @@
       -# g.column name: Note.human_attribute_name(:flds),
         class: 'flds', attribute: 'flds' do |note|
         - note.flds
-      - g.column name: Note.human_attribute_name(:sfld),
+      -# g.column name: Note.human_attribute_name(:sfld),
         class: 'sfld', attribute: 'sfld' do |note|
         - note.sfld
       - g.column name: Note.human_attribute_name(:csum),
-        class: 'csum', attribute: 'csum' do |note|
+        class: 'csum numeric', attribute: 'csum' do |note|
         - note.csum
       - g.column name: Note.human_attribute_name(:flags),
-        class: 'flags', attribute: 'flags' do |note|
+        class: 'flags numeric', attribute: 'flags' do |note|
         - note.flags
-      - g.column name: Note.human_attribute_name(:data),
+      -# g.column name: Note.human_attribute_name(:data),
         class: 'data', attribute: 'data' do |note|
         - note.data
       - g.column do |note|
@@ -57,10 +60,10 @@
           %th= Note.human_attribute_name :usn
           %th= Note.human_attribute_name :tags
           -# %th= Note.human_attribute_name :flds
-          %th= Note.human_attribute_name :sfld
+          -# %th= Note.human_attribute_name :sfld
           %th= Note.human_attribute_name :csum
           %th= Note.human_attribute_name :flags
-          %th= Note.human_attribute_name :data
+          -# %th= Note.human_attribute_name :data
           %th{colspan: 3}= t 'actions'
 
       %tbody
@@ -72,10 +75,10 @@
             %td.usn= note.usn
             %td.tags= note.tags
             -# %td.flds= note.flds
-            %td.sfld= note.sfld
+            -# %td.sfld= note.sfld
             %td.csum= note.csum
             %td.flags= note.flags
-            %td.data= note.data
+            -# %td.data= note.data
             %td.action
               - if can? :show, note
                 = link_to t('show'), note, class: 'show'

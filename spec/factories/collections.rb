@@ -36,6 +36,14 @@ FactoryBot.define do
       {
         sid => {
           "id" => id,
+          "flds" => [
+            {
+              'name' => 'Front'
+            },
+            {
+              'name' => 'Back'
+            },
+          ]
         }
       }
     end

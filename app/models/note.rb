@@ -35,6 +35,14 @@ class Note < ApplicationRecord
     flds.split "\x1f"
   end
 
+  def model
+    return @model if @model
+    Collection.all.detect do |collecion|
+      @model = collecion.models[mid.to_s]
+    end
+    @model
+  end
+
   private
 
   def generate_guid

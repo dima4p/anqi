@@ -11,17 +11,24 @@
   %dd.guid= @note.guid
   %dt= Note.human_attribute_name :mid
   %dd.mid= @note.mid
+  %dt= Note.human_attribute_name :model_name
+  %dd.model_name= @note.model.name
   %dt= Note.human_attribute_name :mod
   %dd.mod= Time.at @note.mod
   %dt= Note.human_attribute_name :usn
   %dd.usn= @note.usn
   %dt= Note.human_attribute_name :tags
-  %dd.tags= @note.tags
+  %dd.tags= @note.tags.inspect
   %dt= Note.human_attribute_name :fields
-  - @note.fields.each do |field|
-    %dd.field= field
-  %dt= Note.human_attribute_name :sfld
-  %dd.sfld= @note.sfld
+  %dd.fields
+    %dl
+      - @note.fields.each_with_index do |field, index|
+        %dt
+          = @note.model.flds[index]['name']
+        %dd.field
+          = field
+  -# %dt= Note.human_attribute_name :sfld
+  -# %dd.sfld= @note.sfld
   %dt= Note.human_attribute_name :csum
   %dd.csum= @note.csum
   %dt= Note.human_attribute_name :flags
