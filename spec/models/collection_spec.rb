@@ -60,4 +60,13 @@ describe Collection, type: :model do
     end
   end
 
+  describe "#models" do
+    subject {collection.models}
+
+    it 'returns an array of Models' do
+      is_expected.to be_a Hash
+      expect(subject.first.last).to be_a Model
+    end
+  end
+
 end

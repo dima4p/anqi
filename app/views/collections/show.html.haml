@@ -49,18 +49,19 @@
         %dt{class: key}
           = key
           = ' = '
-          =Time.at key.to_i / 1000
-        %dd{class: "#{key}-name"}= value['name']
+          = Time.at key.to_i / 1000
+        %dd{class: "#{key}-name"}= value.name
         %dd
           %dl
-            - Array(value['flds']).each do |field|
+            - Array(value.flds).each do |field|
               %dd= field['name']
         -#%dd{class: key}=value.inspect
   %dt= Collection.human_attribute_name :decks
   %dd
     %dl
       - @collection.decks.each do |id, deck|
-        %dt{class: deck.id}=Time.at deck.id.to_i / 1000
+        %dt{class: deck.id}
+          = Time.at deck.id.to_i / 1000
         %dd{class: "#{deck.id}-name"}
           = deck.name
           ***

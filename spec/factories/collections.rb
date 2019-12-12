@@ -27,10 +27,18 @@ FactoryBot.define do
     sequence(:usn) {|n| "6#{format '%03d', n}" }
     sequence(:ls) {|n| "7#{format '%03d', n}" }
     sequence(:conf) {|n| {"key#{format '%03d', n}": "value#{format '%03d', n}"}}
-    sequence(:models) {|n| {(1411485233000 + n) => {"k#{format '%03d', n}": "v#{format '%03d', n}"}}}
     sequence(:dconf) {|n| {"key#{format '%03d', n}": {"k#{format '%03d', n}": "v#{format '%03d', n}"}}}
     sequence(:tags) {|n| "Tags#{format '%03d', n}" }
     decks {{}}
+    sequence(:models) do |n|
+      id = (Time.now.to_i * 1000 + n)
+      sid = id.to_s
+      {
+        sid => {
+          "id" => id,
+        }
+      }
+    end
 
     factory :collection_with_decks do
       sequence(:decks) do |n|
@@ -44,6 +52,6 @@ FactoryBot.define do
           }
         }
       end
-   end
+    end
   end
 end

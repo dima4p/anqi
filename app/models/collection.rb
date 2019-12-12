@@ -45,8 +45,19 @@ class Collection < ApplicationRecord
     end
   end
 
+  def models
+    return unless attributes['models']
+    @models_hash ||= attributes['models'].each_with_object({}) do |(id, attrs), result|
+      model = Model.new attrs
+      model.id = id.to_i
+      model.collection = self
+      result[id] = model
+    end
+  end
+
   def reload
     @decks_hash = nil
+    @models_hash = nil
     super
   end
 

@@ -25,6 +25,7 @@ class Model
   attr_accessor :id
   attr_accessor :css
   attr_accessor :mod
+  attr_accessor :collection
 
   def initialize(attributes = {})
     set_defaults
