@@ -25,6 +25,8 @@ class Note < ApplicationRecord
 
   establish_connection ActiveRecord::Base.configurations["anki"] if Rails.env.development?
 
+  has_many :cards, foreign_key: :nid
+
   before_validation :generate_guid
   validates :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data,
       presence: true

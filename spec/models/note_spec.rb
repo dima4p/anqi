@@ -32,6 +32,7 @@ describe Note, type: :model do
     it { should validate_presence_of :csum }
     it { should validate_presence_of :flags }
     it { should validate_presence_of :data }
+    it { should have_many :cards }
   end   # validations
 
   describe 'class methods' do

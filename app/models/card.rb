@@ -31,6 +31,8 @@ class Card < ApplicationRecord
   establish_connection ActiveRecord::Base.configurations["anki"] if Rails.env.development?
   self.inheritance_column = nil
 
+  belongs_to :note, foreign_key: :nid
+
   validates :nid, :did, :ord, :mod, :usn, :type, :queue, :due, :ivl,
           :factor, :reps, :lapses, :left, :odue, :odid, :flags, :data,
       presence: true

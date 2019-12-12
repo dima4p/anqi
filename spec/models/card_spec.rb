@@ -49,6 +49,7 @@ describe Card, type: :model do
     it { should validate_presence_of :odid }
     it { should validate_presence_of :flags }
     it { should validate_presence_of :data }
+    it { should belong_to :note }
   end   # validations
 
   describe 'class methods' do
