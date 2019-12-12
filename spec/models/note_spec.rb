@@ -49,8 +49,8 @@ describe Note, type: :model do
   describe "#fields" do
     subject {note.fields}
 
-    it 'returns an Array' do
-      is_expected.to be_an Array
+    it 'returns a Hash' do
+      is_expected.to be_a Hash
     end
   end
 

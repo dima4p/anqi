@@ -22,9 +22,9 @@
   %dt= Note.human_attribute_name :fields
   %dd.fields
     %dl
-      - @note.fields.each_with_index do |field, index|
+      - @note.fields.each do |name, field|
         %dt
-          = @note.model.flds[index]['name']
+          = name
         %dd.field
           = field
   -# %dt= Note.human_attribute_name :sfld

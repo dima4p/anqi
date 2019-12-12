@@ -32,7 +32,9 @@ class Note < ApplicationRecord
   scope :ordered, -> { order(:guid) }
 
   def fields
-    flds.split "\x1f"
+    flds.split("\x1f").each_with_index.each_with_object({}) do |(field, index), result|
+      result[model.flds[index]['name']] = field
+    end
   end
 
   def model
