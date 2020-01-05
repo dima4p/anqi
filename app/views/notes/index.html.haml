@@ -10,7 +10,8 @@
         class: 'guid', attribute: 'guid' do |note|
         - note.guid
       - g.column name: Note.human_attribute_name(:mid),
-        class: 'mid', attribute: 'mid' do |note|
+        class: 'mid', attribute: 'mid',
+        custom_filter: :auto do |note|
         - note.mid
       - g.column name: Note.human_attribute_name(:model_name),
         class: 'model_name', attribute: 'mid' do |note|

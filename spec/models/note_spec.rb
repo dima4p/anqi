@@ -44,6 +44,22 @@ describe Note, type: :model do
           expect(Note.ordered).to eq Note.order(:guid)
         end
       end   # .ordered
+
+      describe '.for_model' do
+        let(:collection) {create :collection}
+        let(:model1) {collection.models.values.first}
+        let!(:note1) {create :note, mid: model1.id}
+        let!(:note2) {create :note, mid: model1.id}
+        let(:model2) {build :model, collection: collection}
+        let!(:note3) {create :note, mid: model2.id}
+
+        subject {described_class.for_model model1}
+
+        it "returns the ActiveRecord::Relation of record with the corresponding #mid" do
+          is_expected.to be_an ActiveRecord::Relation
+          expect(subject.count).to be 2
+        end
+      end
     end   # scopes
   end   # class methods
 
