@@ -31,5 +31,6 @@ describe "decks/show", type: :view do
     assert_select 'dl>dd', text: Regexp.new(deck.timeToday.to_s)
     assert_select 'dl>dd', text: Regexp.new(deck.usn.to_s)
     assert_select 'dl>dd', text: Regexp.new(deck.mod.to_s)
+    assert_select 'dl>dd.notes_count', text: Regexp.new(deck.notes_count.to_s)
   end
 end

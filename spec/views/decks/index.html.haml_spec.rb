@@ -34,5 +34,6 @@ describe "decks/index", type: :view do
     assert_select 'tr>td.timeToday', text: deck.timeToday.to_s, count: 1
     assert_select 'tr>td.usn', text: deck.usn.to_s, count: 1
     assert_select 'tr>td.mod', text: deck.mod.to_s, count: 1
+    assert_select 'tr>td.notes_count', text: deck.notes_count.to_s, count: 1
   end
 end

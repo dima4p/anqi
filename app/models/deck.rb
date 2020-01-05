@@ -116,7 +116,11 @@ class Deck
   end
 
   def notes
-    Note.where mid: mid
+    Note.for_model mid
+  end
+
+  def notes_count
+    notes.count
   end
 
   def newToday=(value)

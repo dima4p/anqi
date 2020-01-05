@@ -32,6 +32,10 @@ class Note < ApplicationRecord
       presence: true
 
   scope :ordered, -> { order(:guid) }
+  scope :for_model, -> (model) do
+    model = model.id if model.is_a? Model
+    where mid: model
+  end
 
   def fields
     flds.split("\x1f").each_with_index.each_with_object({}) do |(field, index), result|

@@ -16,6 +16,7 @@ en:
         extendNew: "Extend New"
         extendRev: "Extend Rev"
         lrnToday: "Learned today"
+        notes_count: 'Notes count'
         mid: "Model id"
         newToday: "New today"
         resched: "Rescheduled"

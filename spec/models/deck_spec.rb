@@ -175,6 +175,16 @@ describe Deck, type: :model do
     end
   end
 
+  describe "#notes_count" do
+    subject {deck.notes_count}
+    let!(:note1) {create :note, mid: deck.mid}
+    let!(:note2) {create :note, mid: deck.mid}
+
+    it "returns the number of corresponding Notes" do
+      is_expected.to be 2
+    end
+  end
+
   describe '#newToday' do
     subject {deck.newToday}
 

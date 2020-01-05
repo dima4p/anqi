@@ -28,6 +28,7 @@
         -# %th= Deck.human_attribute_name :terms
         %th= Deck.human_attribute_name :usn
         %th= Deck.human_attribute_name :mod
+        %th= Deck.human_attribute_name :notes_count
         %th{colspan: 3}= t 'actions'
 
     %tbody
@@ -54,6 +55,7 @@
           -# %td.terms= deck.terms
           %td.usn= deck.usn
           %td.mod= deck.mod
+          %td.notes_count= deck.notes_count
           %td.action
             - if can? :show, deck
               = link_to t('show'),
