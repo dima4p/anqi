@@ -7,47 +7,65 @@ class Deck
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_reader   :collection
-  attr_accessor :id
-  attr_accessor :name
-  attr_accessor :browserCollapsed
-  attr_accessor :collapsed
-  attr_accessor :conf
-  attr_accessor :delays
-  attr_accessor :desc
-  attr_accessor :dyn
-  attr_accessor :extendNew
-  attr_accessor :extendRev
-  attr_accessor :mid
-  attr_accessor :resched
-  attr_accessor :return
-  attr_accessor :separate
-  attr_accessor :terms
-  attr_accessor :usn
-  attr_accessor :mod
   # attr_accessor :newToday
   # attr_accessor :lrnToday
   # attr_accessor :revToday
   # attr_accessor :timeToday
 
-  validates :collection, :id, :name, presence: true
+  validates :collection, :model, :id, :name, presence: true
 
   class << self
+    def attributes
+      %i[
+        collection
+        model
+        id
+        name
+        browserCollapsed
+        collapsed
+        conf
+        delays
+        desc
+        dyn
+        extendNew
+        extendRev
+        mid
+        resched
+        return
+        separate
+        terms
+        usn
+        mod
+      ]
+    end
+
     def all(collection_id = 1)
       Collection.find(collection_id).decks.values
     end
 
     def find(id, collection_id = 1)
-      Collection.find(collection_id).decks[id]
+      collection = Collection.find(collection_id)
+      deck = collection.decks[id]
+      if deck
+        deck.model = collection.models[deck.mid.to_s]
+        return deck
+      end
     end
 
     def find_by_name(deck_name)
       Collection.all.detect do |collection|
         id, deck = collection.decks.detect{|k, d| d.name == deck_name}
-        deck and return deck
+        if deck
+          deck.model = collection.models[deck.mid.to_s]
+          return deck
+        end
       end
     end
   end   # class << self
+
+  attributes.each do |attr|
+    attr_accessor attr
+  end
 
   def initialize(attributes = nil)
     reset_counters
@@ -55,14 +73,11 @@ class Deck
     attributes.each do |attr, value|
       send "#{attr}=", value
     end
+    self.model = collection.models[mid.to_s] if collection
   end
 
   def ==(other)
     to_hash == other.to_hash
-  end
-
-  def collection=(collection)
-    @collection = collection
   end
 
   def collection_id=(collection_id)
@@ -190,7 +205,7 @@ class Deck
   private
 
   def set_id!
-    self.id ||= (Time.now.to_i * 1000).to_s
+    self.id ||= (Time.current.to_f * 1000).to_i.to_s
   end
 
   def reset_counters
@@ -198,5 +213,9 @@ class Deck
     @newToday = [0, 0]
     @revToday = [0, 0]
     @timeToday = [0, 0]
+  end
+
+  def logger
+    Rails.logger
   end
 end

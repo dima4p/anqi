@@ -10,28 +10,44 @@ class Model
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :vers
-  attr_accessor :name
-  attr_accessor :tags
-  attr_accessor :did
-  attr_accessor :usn
-  attr_accessor :req
-  attr_accessor :flds
-  attr_accessor :sortf
-  attr_accessor :latexPre
-  attr_accessor :tmpls
-  attr_accessor :latexPost
-  attr_accessor :type
-  attr_accessor :id
-  attr_accessor :css
-  attr_accessor :mod
-  attr_accessor :collection
+  class << self
+    def attributes
+      %i[
+        vers
+        name
+        tags
+        did
+        usn
+        req
+        flds
+        sortf
+        latexPre
+        tmpls
+        latexPost
+        type
+        id
+        css
+        mod
+        collection
+      ]
+    end
+  end   # class << self
+
+  attributes.each do |attr|
+    attr_accessor attr
+  end
 
   def initialize(attributes = {})
     set_defaults
     attributes ||= {}
     attributes.each do |attr, value|
       send "#{attr}=", value
+    end
+  end
+
+  def ==(other)
+    self.class.attributes.all? do |attr|
+      self.send(attr) == other.send(attr)
     end
   end
 

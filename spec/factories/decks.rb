@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :deck do
-    id { (Time.now.to_i * 1000).to_s }
+    id { (Time.current.to_f * 1000).to_i.to_s }
     sequence(:name) {|n| "Name#{format '%03d', n}" }
     sequence(:browserCollapsed) {|n| "Browsercollapsed#{format '%03d', n}" }
     sequence(:collapsed) {|n| "Collapsed#{format '%03d', n}" }
@@ -11,7 +11,7 @@ FactoryBot.define do
     sequence(:extendNew) {|n| 100 + n }
     sequence(:extendRev) {|n| 101 + n }
     sequence(:lrnToday) {|n| 200 + n }
-    sequence(:mid) {|n| "Mid#{format '%03d', n}" }
+    sequence(:mid) {|n| (Time.current.to_f * 1000).to_i}
     sequence(:newToday) {|n| 150 + n }
     sequence(:resched) {|n| "Resched#{format '%03d', n}" }
     sequence(:return) {|n| "Return#{format '%03d', n}" }
@@ -22,5 +22,10 @@ FactoryBot.define do
     sequence(:usn) {|n| "Usn#{format '%03d', n}" }
     sequence(:mod) {|n| "Mod#{format '%03d', n}" }
     association :collection
+
+    after :build do |deck|
+      deck.model = deck.collection.models.values.first
+      deck.mid = deck.model.id
+    end
   end
 end

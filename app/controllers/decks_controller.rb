@@ -34,11 +34,7 @@ class DecksController < ApplicationController
 
   # POST /decks
   def create
-    @deck = Deck.new(deck_params)
-    logger.debug "DecksController@#{__LINE__}#create #{@deck.inspect}" if logger.debug?
-    @deck.collection = @collection
-    logger.debug "DecksController@#{__LINE__}#create #{@deck.inspect}" if logger.debug?
-
+    @deck = Deck.new(deck_params.merge collection_id: @collection_id)
     respond_to do |format|
       if @deck.save
         format.html do

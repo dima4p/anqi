@@ -31,7 +31,7 @@ FactoryBot.define do
     sequence(:tags) {|n| "Tags#{format '%03d', n}" }
     decks {{}}
     sequence(:models) do |n|
-      id = (Time.now.to_i * 1000 + n)
+      id = (Time.current.to_f * 1000).to_i
       sid = id.to_s
       {
         sid => {
@@ -50,15 +50,19 @@ FactoryBot.define do
 
     factory :collection_with_decks do
       sequence(:decks) do |n|
-        id = (Time.now.to_i * 1000 + n).to_s
+        deck_attrs = attributes_for(:deck, collection: nil)
+        id = deck_attrs[:id].to_s
         {
-          id => {
-            "id" => id,
-            "name" => "name#{format '%03d', n}",
-            "lrnToday" => [1900, rand(0..9)],
-            "newToday" => [1900, rand(10..19)],
-          }
+          id => deck_attrs
         }
+      end
+
+      after :build do |collection|
+        mid = collection.models.first.first.to_i
+        collection.decks.each do |id, deck|
+          deck.mid ||= mid
+          deck.collection = collection
+        end
       end
     end
   end

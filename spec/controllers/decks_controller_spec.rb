@@ -11,7 +11,9 @@ describe DecksController, type: :controller do
   let(:deck) {create :deck}
   let(:collection) {deck.collection}
 
-  let(:valid_attributes) {attributes_for(:deck).slice *%w[name].map(&:to_sym)}
+  let(:valid_attributes) do
+    attributes_for(:deck).slice(*%i[name]).merge mid: collection.models.first.first
+  end
 
   let(:invalid_attributes) do
     {name: ''}
@@ -78,7 +80,7 @@ describe DecksController, type: :controller do
             params: {collection_id: collection.id, deck: valid_attributes},
             session: valid_session
         expect(response)
-          .to redirect_to(collection_deck_url(id: deck.id, collection_id: collection.id))
+          .to redirect_to(collection_deck_url(id: collection.reload.decks.keys.last, collection_id: collection.id))
         # expect(response).to redirect_to(decks_url)
       end
     end   # with valid params

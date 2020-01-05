@@ -32,6 +32,7 @@ describe Deck, type: :model do
     it { should validate_presence_of :id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :collection }
+    it { should validate_presence_of :model }
   end   # validations
 
   describe "class" do
@@ -57,6 +58,16 @@ describe Deck, type: :model do
         it "returns the corresponding deck" do
           expect(subject.collection).to eq deck.collection
         end
+
+        it "returns the Deck with the assigned collection" do
+          expect(subject.collection).to be_a Collection
+          expect(subject.collection).to eq collection
+        end
+
+        it "returns the Deck with the assigned model" do
+          expect(subject.model).to be_a Model
+          expect(subject.model).to eq collection.models.values.first
+        end
       end
 
       context "when a corresponding deck does not exist" do
@@ -79,6 +90,16 @@ describe Deck, type: :model do
 
         it "returns the Deck with the given name" do
           is_expected.to eq deck
+        end
+
+        it "returns the Deck with the assigned collection" do
+          expect(subject.collection).to be_a Collection
+          expect(subject.collection).to eq collection
+        end
+
+        it "returns the Deck with the assigned model" do
+          expect(subject.model).to be_a Model
+          expect(subject.model).to eq collection.models.values.first
         end
       end
 

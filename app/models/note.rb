@@ -47,6 +47,10 @@ class Note < ApplicationRecord
     @model
   end
 
+  def model=(model)
+    @model = model if model.is_a? Model
+  end
+
   private
 
   def generate_guid
