@@ -46,6 +46,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancancan'
 
 # models
+gem 'mechanize', github: 'sparklemotion/mechanize' # wait for v2.7.4
 
 # views
 gem 'haml-rails'
