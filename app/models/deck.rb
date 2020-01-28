@@ -116,7 +116,7 @@ class Deck
   end
 
   def notes
-    Note.for_model mid
+    Note.for_deck self
   end
 
   def notes_count

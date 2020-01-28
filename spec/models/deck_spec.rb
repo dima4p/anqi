@@ -177,8 +177,10 @@ describe Deck, type: :model do
 
   describe "#notes_count" do
     subject {deck.notes_count}
-    let!(:note1) {create :note, mid: deck.mid}
-    let!(:note2) {create :note, mid: deck.mid}
+    let(:note1) {create :note, mid: deck.mid}
+    let(:note2) {create :note, mid: deck.mid}
+    let!(:card1) {create :card, nid: note1.id, did: deck.id}
+    let!(:card2) {create :card, nid: note2.id, did: deck.id}
 
     it "returns the number of corresponding Notes" do
       is_expected.to be 2
@@ -204,11 +206,16 @@ describe Deck, type: :model do
 
   describe "#notes" do
     let(:note) {create :note, mid: deck.mid}
+    let!(:card) {create :card, nid: note.id, did: deck.id}
 
     subject {deck.notes}
 
     it 'returns an ActiveRecord::Relation' do
       is_expected.to be_an ActiveRecord::Relation
+    end
+
+    it 'returns an ActiveRecord::Relation of size 1' do
+      expect(subject.count).to be 1
     end
   end
 

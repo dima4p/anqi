@@ -31,7 +31,11 @@ class Note < ApplicationRecord
   validates :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data,
       presence: true
 
-  scope :ordered, -> { order(:guid) }
+  scope :ordered, -> { order(:id) }
+  scope :for_deck, -> (deck) do
+    deck = deck.id if deck.is_a? Deck
+    joins(:cards).where(cards: {did: deck}).distinct
+  end
   scope :for_model, -> (model) do
     model = model.id if model.is_a? Model
     where mid: model
@@ -53,6 +57,11 @@ class Note < ApplicationRecord
 
   def model=(model)
     @model = model if model.is_a? Model
+  end
+
+  def method_missing(method, *args)
+    return super if args.size != 0
+    fields[method.to_s.camelcase] or super
   end
 
   private

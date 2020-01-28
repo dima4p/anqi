@@ -41,9 +41,30 @@ describe Note, type: :model do
         it 'orders the records of Note by :guid' do
           create :note
           create :note
-          expect(Note.ordered).to eq Note.order(:guid)
+          expect(Note.ordered).to eq Note.order(:id)
         end
       end   # .ordered
+
+      describe '.for_deck' do
+        let(:collection) {create :collection_with_decks}
+        let(:deck1) {collection.decks.first.last}
+        let(:deck2) {build :deck}
+        let(:model) {collection.models.values.first}
+        let(:note1) {create :note, mid: model.id}
+        let(:note2) {create :note, mid: model.id}
+        let(:note3) {create :note, mid: model.id}
+        let!(:card1) {create :card, nid: note1.id, did: deck1.id}
+        let!(:card1a) {create :card, nid: note1.id, did: deck1.id}
+        let!(:card2) {create :card, nid: note2.id, did: deck1.id}
+        let!(:card3) {create :card, nid: note3.id, did: deck2.id}
+
+        subject {described_class.for_deck deck1}
+
+        it 'returns the ActiveRecord::Relation of record with the corresponding #did' do
+          is_expected.to be_an ActiveRecord::Relation
+          expect(subject.count).to be 2
+        end
+      end   # .for_deck
 
       describe '.for_model' do
         let(:collection) {create :collection}
