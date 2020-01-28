@@ -42,7 +42,7 @@ class Note < ApplicationRecord
   end
 
   def fields
-    flds.split("\x1f").each_with_index.each_with_object({}) do |(field, index), result|
+    @fieflds ||= flds.split("\x1f").each_with_index.each_with_object({}) do |(field, index), result|
       result[model.flds[index]['name']] = field
     end
   end
@@ -61,7 +61,9 @@ class Note < ApplicationRecord
 
   def method_missing(method, *args)
     return super if args.size != 0
-    fields[method.to_s.camelcase] or super
+    key = method.to_s.camelcase
+    return super unless fields.keys.include? key
+    fields[key]
   end
 
   private
