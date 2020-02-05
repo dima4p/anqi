@@ -28,7 +28,7 @@ class Note < ApplicationRecord
   has_many :cards, foreign_key: :nid
 
   before_validation :generate_guid
-  validates :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data,
+  validates :mid, :mod, :usn, :flds, :sfld, :csum, :flags,
       presence: true
 
   scope :ordered, -> { order(:id) }

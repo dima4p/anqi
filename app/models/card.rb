@@ -34,7 +34,7 @@ class Card < ApplicationRecord
   belongs_to :note, foreign_key: :nid
 
   validates :nid, :did, :ord, :mod, :usn, :type, :queue, :due, :ivl,
-          :factor, :reps, :lapses, :left, :odue, :odid, :flags, :data,
+          :factor, :reps, :lapses, :left, :odue, :odid, :flags,
       presence: true
 
   scope :ordered, -> { order(:nid) }
